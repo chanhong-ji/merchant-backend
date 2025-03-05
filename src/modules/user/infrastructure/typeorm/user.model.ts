@@ -13,7 +13,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column()
   verified: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
   @Column()

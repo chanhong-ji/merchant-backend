@@ -5,7 +5,6 @@ import {
 } from '../../application/dto/create-merchant.dto';
 import { MerchantDto } from './merchant.dto';
 import { BaseOutput } from 'src/modules/common/presentation/output/base.output';
-import { Merchant } from '../../domain/merchant.entity';
 
 @InputType('CreateMerchantInput')
 export class CreateMerchantInput

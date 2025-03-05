@@ -6,7 +6,7 @@ export interface IUser {
   email: string;
   password: string;
   role: UserRole;
-  address: string;
+  address?: string;
   verified: boolean;
   dongCode?: string;
   merchants: IMerchant[];
