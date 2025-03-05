@@ -1,17 +1,11 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { IMerchant } from '../../domain/merchant.interface';
+import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
+import { UserModel } from 'src/modules/user/infrastructure/typeorm/user.model';
+import { User } from 'src/modules/user/domain/user.entity';
 
 @Entity({ name: 'merchant' })
-export class MerchantModel implements IMerchant {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class MerchantModel extends CoreModel implements IMerchant {
   @Column()
   name: string;
 
@@ -24,9 +18,9 @@ export class MerchantModel implements IMerchant {
   @Column({ nullable: true, name: 'dong_code' })
   dongCode?: string;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  @ManyToOne(() => UserModel, (user) => user.merchants, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  user: User;
 }

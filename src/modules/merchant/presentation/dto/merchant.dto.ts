@@ -1,6 +1,7 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { IMerchant } from '../../domain/merchant.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
+import { UserDto } from 'src/modules/user/presentation/user.dto';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -32,4 +33,7 @@ export class MerchantDto implements IMerchant {
 
   @Field(() => Date)
   updatedAt: Date;
+
+  @Field(() => UserDto)
+  user: UserDto;
 }

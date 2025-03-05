@@ -9,6 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MerchantModule } from './modules/merchant/merchant.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './config/configuration';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -23,7 +24,6 @@ import configuration from './config/configuration';
       envFilePath: '.env',
       load: [configuration],
     }),
-    MerchantModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -38,6 +38,9 @@ import configuration from './config/configuration';
       }),
       inject: [ConfigService],
     }),
+
+    MerchantModule,
+    UserModule,
   ],
 })
 export class AppModule {}

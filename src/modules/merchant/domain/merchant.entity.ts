@@ -1,4 +1,5 @@
 import { IMerchant } from './merchant.interface';
+import { User } from 'src/modules/user/domain/user.entity';
 
 export class Merchant implements IMerchant {
   private constructor() {}
@@ -10,6 +11,7 @@ export class Merchant implements IMerchant {
   dongCode?: string;
   createdAt: Date;
   updatedAt: Date;
+  user: User;
 
   static create(input: MerchantAttributes) {
     const merchant = new Merchant();
