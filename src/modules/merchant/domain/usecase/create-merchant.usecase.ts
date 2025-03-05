@@ -12,6 +12,6 @@ export class CreateMerchantUsecase {
   ) {}
   async execute(input: ICreateMerchantInput): Promise<Merchant> {
     const merchant = Merchant.create(input);
-    return await this.repository.create(merchant);
+    return this.repository.save(merchant);
   }
 }

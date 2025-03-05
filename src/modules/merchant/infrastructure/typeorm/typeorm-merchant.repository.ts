@@ -9,11 +9,15 @@ import { Merchant } from '../../domain/merchant.entity';
 export class TypeormMerchantRepository implements MerchantRepository {
   constructor(
     @InjectRepository(MerchantModel)
-    private readonly repository: Repository<MerchantModel>,
+    private readonly repository: Repository<Merchant>,
   ) {}
-  create(merchant: Merchant): Promise<Merchant> {
-    return this.repository.save(merchant);
-  }
   findAll(): Promise<Merchant[]> {
     return this.repository.find();
+  }
+  findById(id: number): Promise<Merchant | null> {
+    return this.repository.findOne({ where: { id } });
+  }
+  save(merchant: Merchant): Promise<Merchant> {
+    return this.repository.save(merchant);
+  }
 }

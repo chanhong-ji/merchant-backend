@@ -22,5 +22,5 @@ export class CreateMerchantOutput
   implements ICreateMerchantOutput
 {
   @Field(() => MerchantDto)
-  merchant: Merchant;
+  merchant: MerchantDto;
 }

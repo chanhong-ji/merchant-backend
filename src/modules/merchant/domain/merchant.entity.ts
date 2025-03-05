@@ -1,12 +1,7 @@
 import { IMerchant } from './merchant.interface';
 
 export class Merchant implements IMerchant {
-  private constructor(input: MerchantAttributes) {
-    this.name = input.name;
-    this.address = input.address;
-    this.coverImage = input.coverImage;
-    this.dongCode = input.dongCode;
-  }
+  private constructor() {}
 
   id: number;
   name: string;
@@ -17,7 +12,22 @@ export class Merchant implements IMerchant {
   updatedAt: Date;
 
   static create(input: MerchantAttributes) {
-    return new Merchant(input);
+    const merchant = new Merchant();
+    for (const key of Object.keys(input)) {
+      if (input[key] != null) {
+        merchant[key] = input[key];
+      }
+    }
+    return merchant;
+  }
+
+  update(input: Partial<MerchantAttributes>): Merchant {
+    for (const key of Object.keys(input)) {
+      if (input[key] != null) {
+        this[key] = input[key];
+      }
+    }
+    return this;
   }
 }
 

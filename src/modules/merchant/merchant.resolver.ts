@@ -5,6 +5,10 @@ import {
   CreateMerchantOutput,
 } from './presentation/dto/create-merchant.dto';
 import { FindMerchantsOutput } from './presentation/dto/find-merchants.dto';
+import {
+  UpdateMerchantInput,
+  UpdateMerchantOutput,
+} from './presentation/dto/update-merchant.dto';
 
 @Resolver()
 export class MerchantResolver {
@@ -22,5 +26,13 @@ export class MerchantResolver {
   async findMerchants(): Promise<FindMerchantsOutput> {
     const merchants = await this.factory.findMerchants();
     return { ok: true, merchants };
+  }
+
+  @Mutation(() => UpdateMerchantOutput)
+  async updateMerchant(
+    @Args('UpdateMerchantInput') input: UpdateMerchantInput,
+  ): Promise<UpdateMerchantOutput> {
+    const merchant = await this.factory.updateMerchant(input);
+    return { ok: true, merchant };
   }
 }

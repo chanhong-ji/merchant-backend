@@ -1,8 +1,8 @@
-import { Merchant } from '../../domain/merchant.entity';
+import { IMerchant } from '../../domain/merchant.interface';
 
 export interface ICreateMerchantInput
-  extends Pick<Merchant, 'name' | 'address' | 'coverImage' | 'dongCode'> {}
+  extends Pick<IMerchant, 'name' | 'address' | 'coverImage' | 'dongCode'> {}
 
 export interface ICreateMerchantOutput {
-  merchant: Merchant;
+  merchant: IMerchant;
 }
