@@ -5,13 +5,15 @@ import { TypeormUserRepository } from './infrastructure/typeorm/typeorm-user.rep
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModel } from './infrastructure/typeorm/user.model';
 import { CreateAccountUsecase } from './domain/usecase/create-account.usecase';
+import { UserErrorService } from './domain/error/user-error.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserModel])],
   providers: [
     UserResolver,
     UserFactory,
-    TypeormUserRepository,
+    UserErrorService,
+    { provide: 'UserRepository', useClass: TypeormUserRepository },
     /** Usecases */
     CreateAccountUsecase,
   ],
