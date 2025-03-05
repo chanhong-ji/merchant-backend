@@ -7,7 +7,7 @@ import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
 
 @Entity({ name: 'user' })
 export class UserModel extends CoreModel implements IUser {
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
