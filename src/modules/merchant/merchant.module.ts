@@ -14,7 +14,7 @@ import { MerchantSubscriber } from './infrastructure/typeorm/merchant.subscriber
   providers: [
     MerchantResolver,
     MerchantFactory,
-    TypeormMerchantRepository,
+    { provide: 'MerchantRepository', useClass: TypeormMerchantRepository },
     MerchantSubscriber,
     /** Usecases */
     CreateMerchantUsecase,

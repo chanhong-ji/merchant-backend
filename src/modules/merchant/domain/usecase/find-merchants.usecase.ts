@@ -1,12 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { MerchantRepository } from '../../application/merchant.repository';
-import { TypeormMerchantRepository } from '../../infrastructure/typeorm/typeorm-merchant.repository';
 import { Merchant } from '../merchant.entity';
 
 @Injectable()
 export class FindMerchantsUsecase {
   constructor(
-    @Inject(TypeormMerchantRepository)
+    @Inject('MerchantRepository')
     private readonly repository: MerchantRepository,
   ) {}
   async execute(): Promise<Merchant[]> {
