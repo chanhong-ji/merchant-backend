@@ -4,6 +4,7 @@ import {
   CreateMerchantInput,
   CreateMerchantOutput,
 } from './presentation/dto/create-merchant.dto';
+import { FindMerchantsOutput } from './presentation/dto/find-merchants.dto';
 
 @Resolver()
 export class MerchantResolver {
@@ -15,5 +16,11 @@ export class MerchantResolver {
   ): Promise<CreateMerchantOutput> {
     const merchant = await this.factory.createMerchant(input);
     return { ok: true, merchant };
+  }
+
+  @Query(() => FindMerchantsOutput)
+  async findMerchants(): Promise<FindMerchantsOutput> {
+    const merchants = await this.factory.findMerchants();
+    return { ok: true, merchants };
   }
 }

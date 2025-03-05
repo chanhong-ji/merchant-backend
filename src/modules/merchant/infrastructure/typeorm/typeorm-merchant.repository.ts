@@ -14,4 +14,6 @@ export class TypeormMerchantRepository implements MerchantRepository {
   create(merchant: Merchant): Promise<Merchant> {
     return this.repository.save(merchant);
   }
+  findAll(): Promise<Merchant[]> {
+    return this.repository.find();
 }

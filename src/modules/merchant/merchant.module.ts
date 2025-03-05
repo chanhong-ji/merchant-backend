@@ -5,6 +5,7 @@ import { TypeormMerchantRepository } from './infrastructure/typeorm/typeorm-merc
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MerchantModel } from './infrastructure/typeorm/merchant.model';
 import { CreateMerchantUsecase } from './domain/usecase/create-merchant.usecase';
+import { FindMerchantsUsecase } from './domain/usecase/find-merchants.usecase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MerchantModel])],
@@ -14,6 +15,7 @@ import { CreateMerchantUsecase } from './domain/usecase/create-merchant.usecase'
     TypeormMerchantRepository,
     /** Usecases */
     CreateMerchantUsecase,
+    FindMerchantsUsecase,
   ],
 })
 export class MerchantModule {}
