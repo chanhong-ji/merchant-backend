@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ICreateAccountInput } from 'src/modules/user/application/dto/create-account.dto';
 import { UserRepository } from 'src/modules/user/application/user.repository';
@@ -5,6 +6,7 @@ import { UserErrorService } from 'src/modules/user/domain/error/user-error.servi
 import { CreateAccountUsecase } from 'src/modules/user/domain/usecase/create-account.usecase';
 import { UserRole } from 'src/modules/user/domain/user-role.enum';
 import { TypeormUserRepository } from 'src/modules/user/infrastructure/typeorm/typeorm-user.repository';
+import * as bcrypt from 'bcrypt';
 jest.mock('src/modules/user/infrastructure/typeorm/typeorm-user.repository');
 
 describe('CreateAccountUsecase', () => {
@@ -14,14 +16,15 @@ describe('CreateAccountUsecase', () => {
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [ConfigModule],
       providers: [
         CreateAccountUsecase,
-        TypeormUserRepository,
+        { provide: 'UserRepository', useClass: TypeormUserRepository },
         UserErrorService,
       ],
     }).compile();
     usecase = module.get(CreateAccountUsecase);
-    repository = module.get(TypeormUserRepository);
+    repository = module.get('UserRepository');
     errorService = module.get(UserErrorService);
   });
 
