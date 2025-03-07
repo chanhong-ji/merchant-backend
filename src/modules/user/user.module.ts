@@ -17,5 +17,6 @@ import { UserErrorService } from './domain/error/user-error.service';
     /** Usecases */
     CreateAccountUsecase,
   ],
+  exports: ['UserRepository', UserErrorService],
 })
 export class UserModule {}

@@ -10,6 +10,7 @@ import { MerchantModule } from './modules/merchant/merchant.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './config/configuration';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -39,8 +40,9 @@ import { UserModule } from './modules/user/user.module';
       inject: [ConfigService],
     }),
 
-    MerchantModule,
+    AuthModule,
     UserModule,
+    MerchantModule,
   ],
 })
 export class AppModule {}

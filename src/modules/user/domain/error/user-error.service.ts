@@ -3,6 +3,8 @@ import { registerEnumType } from '@nestjs/graphql';
 
 enum UserErrorMessage {
   EMAIL_ALREADY_EXIST = 'EMAIL_ALREADY_EXIST',
+  USER_NOT_FOUND = 'USER_NOT_FOUND',
+  PASSWORD_WRONG = 'PASSWORD_WRONG',
 }
 
 registerEnumType(UserErrorMessage, {
@@ -20,6 +22,8 @@ export class UserErrorService {
     UserErrorMessage
   > = {
     EMAIL_ALREADY_EXIST: UserErrorMessage.EMAIL_ALREADY_EXIST,
+    USER_NOT_FOUND: UserErrorMessage.USER_NOT_FOUND,
+    PASSWORD_WRONG: UserErrorMessage.PASSWORD_WRONG,
   };
 
   get = (key: keyof typeof UserErrorMessage): string => {
