@@ -5,6 +5,8 @@ import { AuthFactory } from './domain/auth.factory';
 import { LoginUsecase } from './domain/usecase/login.usecase';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthenticationGuard } from './guard/authentication.guard';
 
 @Module({
   imports: [
@@ -22,6 +24,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
   ],
   providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthenticationGuard,
+    },
     AuthResolver,
     AuthFactory,
     /** Usecases */

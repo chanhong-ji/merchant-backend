@@ -4,11 +4,13 @@ import {
   CreateAccountInput,
   CreateAccountOutput,
 } from './presentation/dto/create-account.dto';
+import { Public } from '../auth/decorator/public.decorator';
 
 @Resolver()
 export class UserResolver {
   constructor(private readonly factory: UserFactory) {}
 
+  @Public()
   @Mutation(() => CreateAccountOutput)
   async createAccount(
     @Args('createAccountInput') input: CreateAccountInput,
