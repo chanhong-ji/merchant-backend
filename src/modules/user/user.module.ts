@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModel } from './infrastructure/typeorm/user.model';
 import { CreateAccountUsecase } from './domain/usecase/create-account.usecase';
 import { UserErrorService } from './domain/error/user-error.service';
+import { FindProfileUsecase } from './domain/usecase/find-profile.usecase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserModel])],
@@ -16,6 +17,7 @@ import { UserErrorService } from './domain/error/user-error.service';
     { provide: 'UserRepository', useClass: TypeormUserRepository },
     /** Usecases */
     CreateAccountUsecase,
+    FindProfileUsecase,
   ],
   exports: ['UserRepository', UserErrorService],
 })
