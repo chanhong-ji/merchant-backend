@@ -16,7 +16,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column({ nullable: true })
   address: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @Column()

@@ -1,5 +1,7 @@
 import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { UserFactory } from './domain/user.factory';
+import { AuthUser } from '../auth/decorator/auth-user.decorator';
+import { User } from './domain/user.entity';
 import {
   CreateAccountInput,
   CreateAccountOutput,
@@ -9,6 +11,10 @@ import {
   FindProfileInput,
   FindProfileOutput,
 } from './presentation/dto/find-profile.dto';
+import {
+  EditProfileInput,
+  EditProfileOutput,
+} from './presentation/dto/edit-profile.dto';
 
 @Resolver()
 export class UserResolver {
@@ -31,6 +37,15 @@ export class UserResolver {
     @Args('findProfileInput') input: FindProfileInput,
   ): Promise<FindProfileOutput> {
     const user = await this.factory.findProfile(input);
+    return { ok: true, user };
+  }
+
+  @Mutation(() => EditProfileOutput)
+  async editProfile(
+    @Args('editProfileInput') input: EditProfileInput,
+    @AuthUser() authUser: User,
+  ): Promise<EditProfileOutput> {
+    const user = await this.factory.editProfile(input, authUser);
     return { ok: true, user };
   }
 }
