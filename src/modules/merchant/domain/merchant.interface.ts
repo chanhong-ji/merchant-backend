@@ -1,4 +1,4 @@
-import { IUser } from 'src/modules/user/domain/user.interface';
+import { IUser } from 'src/modules/user/domain/interface/user.interface';
 
 export interface IMerchant {
   id: number;

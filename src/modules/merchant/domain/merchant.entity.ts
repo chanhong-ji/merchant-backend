@@ -1,5 +1,5 @@
 import { IMerchant } from './merchant.interface';
-import { User } from 'src/modules/user/domain/user.entity';
+import { User } from 'src/modules/user/domain/entity/user.entity';
 
 export class Merchant implements IMerchant {
   private constructor() {}

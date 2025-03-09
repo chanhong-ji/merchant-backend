@@ -1,5 +1,5 @@
 import { IMerchant } from 'src/modules/merchant/domain/merchant.interface';
-import { UserRole } from './user-role.enum';
+import { UserRole } from '../user-role.enum';
 
 export interface IUser {
   id: number;

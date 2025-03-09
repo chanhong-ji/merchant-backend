@@ -1,7 +1,7 @@
 import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { UserFactory } from './domain/user.factory';
 import { AuthUser } from '../auth/decorator/auth-user.decorator';
-import { User } from './domain/user.entity';
+import { User } from './domain/entity/user.entity';
 import {
   CreateAccountInput,
   CreateAccountOutput,

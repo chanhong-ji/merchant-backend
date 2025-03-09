@@ -1,6 +1,6 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/merchant.dto';
-import { IUser } from '../../domain/user.interface';
+import { IUser } from '../../domain/interface/user.interface';
 import { UserRole } from '../../domain/user-role.enum';
 import { IsEmail, IsEnum, IsString } from 'class-validator';
 

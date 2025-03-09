@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAccountUsecase } from './usecase/create-account.usecase';
 import { ICreateAccountInput } from '../application/dto/create-account.dto';
-import { User } from './user.entity';
+import { User } from './entity/user.entity';
 import { IFindProfileInput } from '../application/dto/find-profile.dto';
 import { FindProfileUsecase } from './usecase/find-profile.usecase';
 import { EditProfileUsecase } from './usecase/edit-profile.usecase';

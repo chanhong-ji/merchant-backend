@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UserRepository } from '../../application/user.repository';
 import { ICreateAccountInput } from '../../application/dto/create-account.dto';
-import { User } from '../user.entity';
+import { User } from '../entity/user.entity';
 import { UserErrorService } from '../error/user-error.service';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';

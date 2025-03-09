@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { UserRepository } from '../../application/user.repository';
 import { UserErrorService } from '../error/user-error.service';
 import { IFindProfileInput } from '../../application/dto/find-profile.dto';
-import { User } from '../user.entity';
+import { User } from '../entity/user.entity';
 
 @Injectable()
 export class FindProfileUsecase {

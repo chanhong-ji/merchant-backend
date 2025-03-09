@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ILoginInput } from '../../application/dto/login.dto';
 import { UserRepository } from 'src/modules/user/application/user.repository';
 import { UserErrorService } from 'src/modules/user/domain/error/user-error.service';
-import { User } from 'src/modules/user/domain/user.entity';
+import { User } from 'src/modules/user/domain/entity/user.entity';
 
 @Injectable()
 export class LoginUsecase {

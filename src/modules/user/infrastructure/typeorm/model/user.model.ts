@@ -1,7 +1,7 @@
-import { IUser } from '../../domain/user.interface';
-import { UserRole } from '../../domain/user-role.enum';
+import { IUser } from '../../../domain/interface/user.interface';
+import { UserRole } from '../../../domain/user-role.enum';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/merchant.model';
 import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
 

@@ -1,5 +1,5 @@
-import { UserRole } from './user-role.enum';
-import { IUser } from './user.interface';
+import { UserRole } from '../user-role.enum';
+import { IUser } from '../interface/user.interface';
 import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
 
 export class User implements IUser {

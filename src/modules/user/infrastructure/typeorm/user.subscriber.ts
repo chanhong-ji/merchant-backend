@@ -4,8 +4,8 @@ import {
   LoadEvent,
   DataSource,
 } from 'typeorm';
-import { UserModel } from './user.model';
-import { User } from '../../domain/user.entity';
+import { UserModel } from './model/user.model';
+import { User } from '../../domain/entity/user.entity';
 
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<UserModel> {

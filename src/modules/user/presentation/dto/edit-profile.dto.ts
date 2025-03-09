@@ -3,7 +3,7 @@ import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
 import { BaseOutput } from 'src/modules/common/presentation/output/base.output';
 import { UserDto } from './user.dto';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
-import { User } from '../../domain/user.entity';
+import { User } from '../../domain/entity/user.entity';
 
 @InputType()
 export class EditProfileInput implements IEditProfileInput {
