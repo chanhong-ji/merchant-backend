@@ -6,6 +6,8 @@ import { IFindProfileInput } from '../application/dto/find-profile.dto';
 import { FindProfileUsecase } from './usecase/find-profile.usecase';
 import { EditProfileUsecase } from './usecase/edit-profile.usecase';
 import { IEditProfileInput } from '../application/dto/edit-profile.dto';
+import { VerifyEmailUsecase } from './usecase/verify-email.usecase';
+import { IVerifyEmailInput } from 'src/modules/merchant/application/dto/verify-email.dto';
 
 @Injectable()
 export class UserFactory {
@@ -13,6 +15,7 @@ export class UserFactory {
     private readonly createAccountUsecase: CreateAccountUsecase,
     private readonly findProfileUsecase: FindProfileUsecase,
     private readonly editProfileUsecase: EditProfileUsecase,
+    private readonly verifyEmailUsecase: VerifyEmailUsecase,
   ) {}
 
   createAccount(input: ICreateAccountInput): Promise<User> {
@@ -25,5 +28,9 @@ export class UserFactory {
 
   editProfile(input: IEditProfileInput, user: User): Promise<User> {
     return this.editProfileUsecase.execute(input, user);
+  }
+
+  verifyEmail(input: IVerifyEmailInput, user: User): Promise<void> {
+    return this.verifyEmailUsecase.execute(input, user);
   }
 }

@@ -5,6 +5,7 @@ import { User } from '../entity/user.entity';
 import { UserErrorService } from '../error/user-error.service';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
+import { Verification } from '../entity/verification.entity';
 
 @Injectable()
 export class CreateAccountUsecase {
@@ -30,6 +31,7 @@ export class CreateAccountUsecase {
   async createUser(input: ICreateAccountInput) {
     const user = User.create(input);
     user.password = await this.createHashedPassword(user.password);
+    user.verification = Verification.create(user);
     return this.repository.save(user);
   }
 

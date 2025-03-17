@@ -33,8 +33,9 @@ export class UserModel extends CoreModel implements IUser {
   merchants: Merchant[];
 
   @OneToOne(() => VerificationModel, (verification) => verification.user, {
-    cascade: true,
+    onDelete: 'SET NULL',
+    nullable: true,
   })
-  @JoinColumn({ name: 'verification_id' })
-  verification: VerificationModel;
+  @JoinColumn({ name: 'verification_id', referencedColumnName: 'id' })
+  verification?: VerificationModel;
 }

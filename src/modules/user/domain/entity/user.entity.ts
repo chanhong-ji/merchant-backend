@@ -12,7 +12,7 @@ export class User implements IUser {
   dongCode?: string;
   verified: boolean;
   merchants: Merchant[];
-  verification: Verification;
+  verification?: Verification;
   createdAt: Date;
   updatedAt: Date;
 

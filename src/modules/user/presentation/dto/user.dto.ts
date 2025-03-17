@@ -44,5 +44,5 @@ export class UserDto implements IUser {
   merchants: MerchantDto[];
 
   @Field(() => VerificationDto)
-  verification: VerificationDto;
+  verification?: VerificationDto;
 }

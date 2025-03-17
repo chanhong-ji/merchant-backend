@@ -11,7 +11,7 @@ export interface IUser {
   verified: boolean;
   dongCode?: string;
   merchants: IMerchant[];
-  verification: IVerification;
+  verification?: IVerification;
   createdAt: Date;
   updatedAt: Date;
 }

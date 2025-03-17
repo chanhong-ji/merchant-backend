@@ -5,6 +5,7 @@ enum UserErrorMessage {
   EMAIL_ALREADY_EXIST = 'EMAIL_ALREADY_EXIST',
   USER_NOT_FOUND = 'USER_NOT_FOUND',
   PASSWORD_WRONG = 'PASSWORD_WRONG',
+  VERIFICATION_CODE_WRONG = 'VERIFICATION_CODE_WRONG',
 }
 
 registerEnumType(UserErrorMessage, {
@@ -24,6 +25,7 @@ export class UserErrorService {
     EMAIL_ALREADY_EXIST: UserErrorMessage.EMAIL_ALREADY_EXIST,
     USER_NOT_FOUND: UserErrorMessage.USER_NOT_FOUND,
     PASSWORD_WRONG: UserErrorMessage.PASSWORD_WRONG,
+    VERIFICATION_CODE_WRONG: UserErrorMessage.VERIFICATION_CODE_WRONG,
   };
 
   get = (key: keyof typeof UserErrorMessage): string => {

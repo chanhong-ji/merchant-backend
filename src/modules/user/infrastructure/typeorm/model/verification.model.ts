@@ -1,21 +1,11 @@
 import { IVerification } from '../../../domain/interface/verification.interface';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Generated,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, Generated, OneToOne } from 'typeorm';
 import { UserModel } from 'src/modules/user/infrastructure/typeorm/model/user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
+import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
 
 @Entity({ name: 'verification' })
-export class VerificationModel implements IVerification {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class VerificationModel extends CoreModel implements IVerification {
   @Generated('uuid')
   @Column()
   code: string;
@@ -24,10 +14,4 @@ export class VerificationModel implements IVerification {
     onDelete: 'CASCADE',
   })
   user: User;
-
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
 }

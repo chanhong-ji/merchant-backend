@@ -15,6 +15,8 @@ import {
   EditProfileInput,
   EditProfileOutput,
 } from './presentation/dto/edit-profile.dto';
+import { BaseOutput } from '../common/presentation/output/base.output';
+import { VerifyEmailInput } from './presentation/dto/verify-email.dto';
 
 @Resolver()
 export class UserResolver {
@@ -47,5 +49,14 @@ export class UserResolver {
   ): Promise<EditProfileOutput> {
     const user = await this.factory.editProfile(input, authUser);
     return { ok: true, user };
+  }
+
+  @Mutation(() => BaseOutput)
+  async verifyEmail(
+    @Args('verifyEmailInput') input: VerifyEmailInput,
+    @AuthUser() user: User,
+  ): Promise<BaseOutput> {
+    await this.factory.verifyEmail(input, user);
+    return { ok: true };
   }
 }
