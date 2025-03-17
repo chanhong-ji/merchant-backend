@@ -1,5 +1,6 @@
 import { IMerchant } from 'src/modules/merchant/domain/merchant.interface';
 import { UserRole } from '../user-role.enum';
+import { IVerification } from './verification.interface';
 
 export interface IUser {
   id: number;
@@ -10,6 +11,7 @@ export interface IUser {
   verified: boolean;
   dongCode?: string;
   merchants: IMerchant[];
+  verification: IVerification;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -8,9 +8,10 @@ import { CreateAccountUsecase } from './domain/usecase/create-account.usecase';
 import { UserErrorService } from './domain/error/user-error.service';
 import { FindProfileUsecase } from './domain/usecase/find-profile.usecase';
 import { EditProfileUsecase } from './domain/usecase/edit-profile.usecase';
+import { VerificationModel } from './infrastructure/typeorm/model/verification.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserModel])],
+  imports: [TypeOrmModule.forFeature([UserModel, VerificationModel])],
   providers: [
     UserResolver,
     UserFactory,

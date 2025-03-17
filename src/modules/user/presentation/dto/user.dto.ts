@@ -3,7 +3,8 @@ import { MerchantDto } from 'src/modules/merchant/presentation/dto/merchant.dto'
 import { IUser } from '../../domain/interface/user.interface';
 import { UserRole } from '../../domain/user-role.enum';
 import { IsEmail, IsEnum, IsString } from 'class-validator';
-
+import { IVerification } from '../../domain/interface/verification.interface';
+import { VerificationDto } from './verification.dto';
 @ObjectType()
 @InputType({ isAbstract: true })
 export class UserDto implements IUser {
@@ -41,4 +42,7 @@ export class UserDto implements IUser {
 
   @Field(() => [MerchantDto])
   merchants: MerchantDto[];
+
+  @Field(() => VerificationDto)
+  verification: VerificationDto;
 }

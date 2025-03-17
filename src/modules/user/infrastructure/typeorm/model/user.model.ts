@@ -1,9 +1,11 @@
 import { IUser } from '../../../domain/interface/user.interface';
 import { UserRole } from '../../../domain/user-role.enum';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
-import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/merchant.model';
 import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
+import { Verification } from 'src/modules/user/domain/entity/verification.entity';
+import { VerificationModel } from './verification.model';
 
 @Entity({ name: 'user' })
 export class UserModel extends CoreModel implements IUser {
@@ -16,7 +18,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column({ nullable: true })
   address: string;
 
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @Column()
@@ -29,4 +31,10 @@ export class UserModel extends CoreModel implements IUser {
     cascade: true,
   })
   merchants: Merchant[];
+
+  @OneToOne(() => VerificationModel, (verification) => verification.user, {
+    cascade: true,
+  })
+  @JoinColumn({ name: 'verification_id' })
+  verification: VerificationModel;
 }

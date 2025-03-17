@@ -1,6 +1,7 @@
 import { UserRole } from '../user-role.enum';
 import { IUser } from '../interface/user.interface';
 import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
+import { Verification } from './verification.entity';
 
 export class User implements IUser {
   id: number;
@@ -11,6 +12,7 @@ export class User implements IUser {
   dongCode?: string;
   verified: boolean;
   merchants: Merchant[];
+  verification: Verification;
   createdAt: Date;
   updatedAt: Date;
 
