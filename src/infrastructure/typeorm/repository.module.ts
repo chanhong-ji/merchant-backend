@@ -11,6 +11,7 @@ import { VerificationModel } from './model/verification.model';
 import { TypeormCategoryRepository } from './repository/typeorm-category.repository';
 import { OrderModel } from './model/order.model';
 import { OrderItemModel } from './model/order-item.model';
+import { TypeormOrderRepository } from './repository/typeorm-order.repository';
 
 @Module({
   imports: [
@@ -29,12 +30,14 @@ import { OrderItemModel } from './model/order-item.model';
     { provide: 'ProductRepository', useClass: TypeormProductRepository },
     { provide: 'CategoryRepository', useClass: TypeormCategoryRepository },
     { provide: 'UserRepository', useClass: TypeormUserRepository },
+    { provide: 'OrderRepository', useClass: TypeormOrderRepository },
   ],
   exports: [
     'MerchantRepository',
     'ProductRepository',
     'UserRepository',
     'CategoryRepository',
+    'OrderRepository',
   ],
 })
 export class RepositoryModule {}

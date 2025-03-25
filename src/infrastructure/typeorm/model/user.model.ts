@@ -19,7 +19,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column({ nullable: true })
   address: string;
 
-  @OneToMany(() => OrderModel, (order) => order.products)
+  @OneToMany(() => OrderModel, (order) => order.items)
   orders: Order[];
 
   @OneToMany(() => OrderModel, (order) => order.driver)

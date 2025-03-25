@@ -3,11 +3,11 @@ import { CoreModel } from './core.model';
 import { IOrder } from 'src/modules/order/domain/interface/order.interface';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
-import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { OrderStatus } from 'src/modules/order/domain/enum/order-status.enum';
-import { ProductModel } from './product.model';
 import { MerchantModel } from './merchant.model';
 import { UserModel } from './user.model';
+import { OrderItem } from 'src/modules/order/domain/entity/order-item.entity';
+import { OrderItemModel } from './order-item.model';
 
 @Entity({ name: 'order' })
 export class OrderModel extends CoreModel implements IOrder {
@@ -29,9 +29,9 @@ export class OrderModel extends CoreModel implements IOrder {
   })
   merchant?: Merchant;
 
-  @ManyToMany(() => ProductModel)
+  @ManyToMany(() => OrderItemModel)
   @JoinTable()
-  products: Product[];
+  items: OrderItem[];
 
   @Column()
   total: number;

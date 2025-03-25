@@ -3,6 +3,7 @@ import { OrderOption } from 'src/modules/order/domain/entity/order-item.entity';
 import { IOrderItem } from 'src/modules/order/domain/interface/order-item.interface';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { ProductDto } from 'src/modules/product/presentation/dto/abstract/product.dto';
+import { OrderOptionDto } from '../order-option.dto';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -13,7 +14,7 @@ export class OrderItemDto implements IOrderItem {
   @Field(() => ProductDto, { description: '상품' })
   product: Product;
 
-  @Field(() => String, { description: '선택한 상품 옵션' })
+  @Field(() => OrderOptionDto, { description: '선택한 상품 옵션' })
   choices?: OrderOption[];
 
   @Field(() => Date, { description: '생성일' })

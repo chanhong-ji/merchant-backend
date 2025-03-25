@@ -1,13 +1,16 @@
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
-import { IProduct } from 'src/modules/product/domain/interface/product.interface';
 import { IUser } from 'src/modules/user/domain/interface/user.interface';
 import { OrderStatus } from '../enum/order-status.enum';
+import { IOrderItem } from './order-item.interface';
 
 export interface IOrder {
+  id: number;
   customer?: IUser;
   driver?: IUser;
   merchant?: IMerchant;
-  products: IProduct[];
+  items: IOrderItem[];
   total: number;
   status: OrderStatus;
+  createdAt: Date;
+  updatedAt: Date;
 }
