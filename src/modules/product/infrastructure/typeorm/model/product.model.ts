@@ -14,8 +14,8 @@ export class ProductModel extends CoreModel implements IProduct {
   @Column()
   price: number;
 
-  @Column()
-  photo: string;
+  @Column({ nullable: true })
+  photo?: string;
 
   @Column()
   description: string;

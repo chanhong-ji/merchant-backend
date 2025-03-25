@@ -1,5 +1,5 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { IsInt, IsString, Length } from 'class-validator';
+import { IsInt, IsOptional, IsString, Length } from 'class-validator';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { IProduct } from '../../domain/interface/product.interface';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/merchant.dto';
@@ -21,9 +21,10 @@ export class ProductDto implements IProduct {
   @IsInt()
   price: number;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
+  @IsOptional()
   @IsString()
-  photo: string;
+  photo?: string;
 
   @Field(() => String)
   @Length(5, 140)

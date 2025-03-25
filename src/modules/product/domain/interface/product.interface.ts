@@ -5,7 +5,7 @@ export interface IProduct {
   id: number;
   name: string;
   price: number;
-  photo: string;
+  photo?: string;
   description: string;
   options: IOption[];
   merchant: IMerchant;
