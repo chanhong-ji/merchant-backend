@@ -4,35 +4,21 @@ import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { User } from '../user/domain/entity/user.entity';
 import { Role } from '../auth/decorator/role.decorator';
 import { FindAllCategoriesOutput } from './presentation/dto/find-all-categories.dto';
-import {
-  CreateMerchantInput,
-  CreateMerchantOutput,
-} from './presentation/dto/create-merchant.dto';
-import {
-  UpdateMerchantInput,
-  UpdateMerchantOutput,
-} from './presentation/dto/update-merchant.dto';
+import { CreateMerchantInput, CreateMerchantOutput } from './presentation/dto/create-merchant.dto';
+import { UpdateMerchantInput, UpdateMerchantOutput } from './presentation/dto/update-merchant.dto';
 import {
   FindMerchantByCategoryInput,
   FindMerchantByCategoryOutput,
 } from './presentation/dto/find-merchant-by-category.dto';
-import {
-  SearchMerchantInput,
-  SearchMerchantOutput,
-} from './presentation/dto/search-merchant.dto';
-import {
-  FindMerchantByIdInput,
-  FindMerchantByIdOutput,
-} from './presentation/dto/find-merchant-by-id.dto';
+import { SearchMerchantInput, SearchMerchantOutput } from './presentation/dto/search-merchant.dto';
+import { FindMerchantByIdInput, FindMerchantByIdOutput } from './presentation/dto/find-merchant-by-id.dto';
 
 @Resolver()
 export class MerchantResolver {
   constructor(private readonly factory: MerchantFactory) {}
 
   @Query(() => FindMerchantByIdOutput)
-  async findMerchantById(
-    @Args('FindMerchantByIdInput') input: FindMerchantByIdInput,
-  ) {
+  async findMerchantById(@Args('FindMerchantByIdInput') input: FindMerchantByIdInput) {
     const merchant = await this.factory.findMerchantById(input);
     return {
       ok: true,
@@ -70,11 +56,8 @@ export class MerchantResolver {
   }
 
   @Query(() => FindMerchantByCategoryOutput)
-  async findMerchantByCategory(
-    @Args('FindMerchantByCategoryInput') input: FindMerchantByCategoryInput,
-  ) {
-    const { total, merchants } =
-      await this.factory.findMerchantByCategory(input);
+  async findMerchantByCategory(@Args('FindMerchantByCategoryInput') input: FindMerchantByCategoryInput) {
+    const { total, merchants } = await this.factory.findMerchantByCategory(input);
     return {
       ok: true,
       total,
@@ -83,9 +66,7 @@ export class MerchantResolver {
   }
 
   @Query(() => SearchMerchantOutput)
-  async searchMerchant(
-    @Args('SearchMerchantInput') input: SearchMerchantInput,
-  ) {
+  async searchMerchant(@Args('SearchMerchantInput') input: SearchMerchantInput) {
     const { total, merchants } = await this.factory.searchMerchant(input);
     return {
       ok: true,
