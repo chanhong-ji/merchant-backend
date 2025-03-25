@@ -1,16 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UserRepository } from '../../application/user.repository';
-import { UserErrorService } from '../error/user-error.service';
 import { User } from '../entity/user.entity';
 import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
 import { ConfigService } from '@nestjs/config';
+import { ErrorService } from 'src/common/error/error.service';
 
 @Injectable()
 export class EditProfileUsecase {
   constructor(
     @Inject('UserRepository') private readonly repository: UserRepository,
-    private readonly errorService: UserErrorService,
+    private readonly errorService: ErrorService,
     private readonly configService: ConfigService,
   ) {}
 

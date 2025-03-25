@@ -4,7 +4,7 @@ import {
   ICreateMerchantOutput,
 } from '../../application/dto/create-merchant.dto';
 import { MerchantDto } from './merchant.dto';
-import { BaseOutput } from 'src/modules/common/presentation/dto/base.dto';
+import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { IsInt } from 'class-validator';
 
 @InputType('CreateMerchantInput')

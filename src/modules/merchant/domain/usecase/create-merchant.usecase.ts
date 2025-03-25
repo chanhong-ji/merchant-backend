@@ -2,9 +2,9 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ICreateMerchantInput } from '../../application/dto/create-merchant.dto';
 import { MerchantRepository } from '../../application/repository/merchant.repository';
 import { Merchant } from '../entity/merchant.entity';
-import { MerchantErrorService } from '../error/merchant-error.service';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { CategoryRepository } from '../../application/repository/category.repository';
+import { ErrorService } from 'src/common/error/error.service';
 
 @Injectable()
 export class CreateMerchantUsecase {
@@ -13,7 +13,7 @@ export class CreateMerchantUsecase {
     private readonly merchantRepo: MerchantRepository,
     @Inject('CategoryRepository')
     private readonly categoryRepo: CategoryRepository,
-    private readonly errorService: MerchantErrorService,
+    private readonly errorService: ErrorService,
   ) {}
   async execute(user: User, input: ICreateMerchantInput): Promise<Merchant> {
     const category = await this.categoryRepo.findById(input.categoryId);

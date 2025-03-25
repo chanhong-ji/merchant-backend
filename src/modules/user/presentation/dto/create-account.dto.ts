@@ -1,7 +1,7 @@
 import { Field, InputType, Int, ObjectType, PickType } from '@nestjs/graphql';
 import { ICreateAccountInput } from '../../application/dto/create-account.dto';
 import { UserDto } from './user.dto';
-import { BaseOutput } from 'src/modules/common/presentation/dto/base.dto';
+import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 
 @InputType()
 export class CreateAccountInput

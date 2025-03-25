@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { MerchantRepository } from '../../application/repository/merchant.repository';
-import { MerchantErrorService } from '../error/merchant-error.service';
 import {
   IFindMerchantByCategoryInput,
   IFindMerchantByCategoryOutput,
 } from '../../application/dto/find-merchant-by-category.dto';
 import { CategoryRepository } from '../../application/repository/category.repository';
+import { ErrorService } from 'src/common/error/error.service';
 
 @Injectable()
 export class FindMerchantByCategoryUsecase {
@@ -14,7 +14,7 @@ export class FindMerchantByCategoryUsecase {
     private readonly merchantRepo: MerchantRepository,
     @Inject('CategoryRepository')
     private readonly categoryRepo: CategoryRepository,
-    private readonly errorService: MerchantErrorService,
+    private readonly errorService: ErrorService,
   ) {}
   async execute(
     input: IFindMerchantByCategoryInput,

@@ -3,15 +3,15 @@ import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ILoginInput } from '../../application/dto/login.dto';
 import { UserRepository } from 'src/modules/user/application/user.repository';
-import { UserErrorService } from 'src/modules/user/domain/error/user-error.service';
 import { User } from 'src/modules/user/domain/entity/user.entity';
+import { ErrorService } from 'src/common/error/error.service';
 
 @Injectable()
 export class LoginUsecase {
   constructor(
     @Inject('UserRepository')
     private readonly userRepository: UserRepository,
-    private readonly errorService: UserErrorService,
+    private readonly errorService: ErrorService,
     private jwtService: JwtService,
   ) {}
 

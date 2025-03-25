@@ -5,7 +5,6 @@ import { CreateMerchantUsecase } from './domain/usecase/create-merchant.usecase'
 import { UpdateMerchantUsecase } from './domain/usecase/update-merchant.usecase';
 import { MerchantSubscriber } from 'src/infrastructure/typeorm/subscriber/merchant.subscriber';
 import { CategorySubscriber } from 'src/infrastructure/typeorm/subscriber/category.subscriber';
-import { MerchantErrorService } from './domain/error/merchant-error.service';
 import { FindAllCategoriesUsecase } from './domain/usecase/find-all-categories.usecase';
 import { FindMerchantByCategoryUsecase } from './domain/usecase/find-merchant-by-category.usecase';
 import { SearchMerchantUsecase } from './domain/usecase/search-merchant.usecase';
@@ -18,7 +17,6 @@ import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
     MerchantFactory,
     MerchantSubscriber,
     CategorySubscriber,
-    MerchantErrorService,
     /** Usecases */
     CreateMerchantUsecase,
     UpdateMerchantUsecase,

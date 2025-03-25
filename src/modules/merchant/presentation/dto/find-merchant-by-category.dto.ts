@@ -8,7 +8,7 @@ import { SimpleMerchantDto } from './simple-merchant.dto';
 import {
   PaginationInput,
   PaginationOutput,
-} from 'src/modules/common/presentation/dto/pagination.dto';
+} from 'src/modules/shared/presentation/dto/pagination.dto';
 import { Merchant } from '../../domain/entity/merchant.entity';
 
 @InputType()

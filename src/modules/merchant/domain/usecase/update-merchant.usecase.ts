@@ -8,9 +8,9 @@ import { MerchantRepository } from '../../application/repository/merchant.reposi
 import { IUpdateMerchantInput } from '../../application/dto/update-merchant.dto';
 import { Merchant } from '../entity/merchant.entity';
 import { User } from 'src/modules/user/domain/entity/user.entity';
-import { MerchantErrorService } from '../error/merchant-error.service';
 import { Category } from '../entity/category.entity';
 import { CategoryRepository } from '../../application/repository/category.repository';
+import { ErrorService } from 'src/common/error/error.service';
 
 @Injectable()
 export class UpdateMerchantUsecase {
@@ -19,7 +19,7 @@ export class UpdateMerchantUsecase {
     private readonly merchantRepo: MerchantRepository,
     @Inject('CategoryRepository')
     private readonly categoryRepo: CategoryRepository,
-    private readonly errorService: MerchantErrorService,
+    private readonly errorService: ErrorService,
   ) {}
 
   async execute(user: User, input: IUpdateMerchantInput): Promise<Merchant> {

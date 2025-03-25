@@ -1,14 +1,14 @@
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import { SimpleMerchantDto } from './simple-merchant.dto';
+import { Merchant } from '../../domain/entity/merchant.entity';
 import {
   PaginationInput,
   PaginationOutput,
-} from 'src/modules/common/presentation/dto/pagination.dto';
+} from 'src/modules/shared/presentation/dto/pagination.dto';
 import {
   ISearchMerchantInput,
   ISearchMerchantOutput,
 } from '../../application/dto/search-merchant.dto';
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
-import { SimpleMerchantDto } from './simple-merchant.dto';
-import { Merchant } from '../../domain/entity/merchant.entity';
 
 @InputType()
 export class SearchMerchantInput
