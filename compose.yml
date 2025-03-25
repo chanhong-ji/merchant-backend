@@ -1,0 +1,18 @@
+services:
+  web:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env.dev
+    environment:
+      NODE_ENV: dev
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:13
+    env_file:
+      - .env.dev
