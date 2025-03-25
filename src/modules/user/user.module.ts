@@ -13,7 +13,6 @@ import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
   providers: [
     UserResolver,
     UserFactory,
-    UserSubscriber,
     /** Usecases */
     CreateAccountUsecase,
     FindProfileUsecase,

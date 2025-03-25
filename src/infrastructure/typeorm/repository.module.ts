@@ -12,6 +12,11 @@ import { TypeormCategoryRepository } from './repository/typeorm-category.reposit
 import { OrderModel } from './model/order.model';
 import { OrderItemModel } from './model/order-item.model';
 import { TypeormOrderRepository } from './repository/typeorm-order.repository';
+import { UserSubscriber } from './subscriber/user.subscriber';
+import { MerchantSubscriber } from './subscriber/merchant.subscriber';
+import { ProductSubscriber } from './subscriber/product.subscriber';
+import { CategorySubscriber } from './subscriber/category.subscriber';
+import { OrderSubscriber } from './subscriber/order.subscriber';
 
 @Module({
   imports: [
@@ -31,6 +36,12 @@ import { TypeormOrderRepository } from './repository/typeorm-order.repository';
     { provide: 'CategoryRepository', useClass: TypeormCategoryRepository },
     { provide: 'UserRepository', useClass: TypeormUserRepository },
     { provide: 'OrderRepository', useClass: TypeormOrderRepository },
+
+    UserSubscriber,
+    MerchantSubscriber,
+    ProductSubscriber,
+    CategorySubscriber,
+    OrderSubscriber,
   ],
   exports: [
     'MerchantRepository',

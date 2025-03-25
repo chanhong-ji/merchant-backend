@@ -16,8 +16,6 @@ import { FindMerchantByIdUsecase } from './domain/usecase/find-merchant-by-id.us
   providers: [
     MerchantResolver,
     MerchantFactory,
-    MerchantSubscriber,
-    CategorySubscriber,
 
     /** Usecases */
     FindMerchantByIdUsecase,

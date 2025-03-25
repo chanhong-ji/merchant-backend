@@ -10,7 +10,6 @@ import { CreateOrderUsecase } from './domain/usecase/create-order.usecase';
   providers: [
     OrderResolver,
     OrderFactory,
-    OrderSubscriber,
 
     /** Usecases */
     CreateOrderUsecase,

@@ -12,7 +12,6 @@ import { EditProductUsecase } from './domain/usecase/edit-product.usecase';
   providers: [
     ProductResolver,
     ProductFactory,
-    ProductSubscriber,
 
     /** Usecase */
     CreateProductUsecase,
