@@ -8,6 +8,10 @@ import { Role } from '../auth/decorator/role.decorator';
 import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { User } from '../user/domain/entity/user.entity';
 import { BaseOutput } from '../shared/presentation/dto/base.dto';
+import {
+  EditProductInput,
+  EditProductOutput,
+} from './presentation/dto/edit-product.dto';
 
 @Resolver()
 export class ProductResolver {
@@ -31,5 +35,15 @@ export class ProductResolver {
   ): Promise<BaseOutput> {
     await this.factory.removeProduct(id, user);
     return { ok: true };
+  }
+
+  @Mutation(() => EditProductOutput)
+  @Role(['Owner'])
+  async editProduct(
+    @Args('EditProfileInput') input: EditProductInput,
+    @AuthUser() user: User,
+  ): Promise<EditProductOutput> {
+    const product = await this.factory.editProduct(input, user);
+    return { ok: true, product };
   }
 }

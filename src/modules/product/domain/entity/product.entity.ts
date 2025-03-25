@@ -1,5 +1,5 @@
-import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { IProduct } from '../interface/product.interface';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { Option } from './option.entity';
 
 export class Product implements IProduct {
@@ -22,6 +22,15 @@ export class Product implements IProduct {
       }
     }
     return product;
+  }
+
+  update(input: Partial<ProductAttributes>): Product {
+    for (const key of Object.keys(input)) {
+      if (input[key] != null) {
+        this[key] = input[key];
+      }
+    }
+    return this;
   }
 }
 
