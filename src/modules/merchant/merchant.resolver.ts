@@ -9,6 +9,8 @@ import {
   UpdateMerchantInput,
   UpdateMerchantOutput,
 } from './presentation/dto/update-merchant.dto';
+import { AuthUser } from '../auth/decorator/auth-user.decorator';
+import { User } from '../user/domain/entity/user.entity';
 
 @Resolver()
 export class MerchantResolver {
@@ -17,8 +19,9 @@ export class MerchantResolver {
   @Mutation(() => CreateMerchantOutput)
   async createMerchant(
     @Args('CreateMerchantInput') input: CreateMerchantInput,
+    @AuthUser() user: User,
   ): Promise<CreateMerchantOutput> {
-    const merchant = await this.factory.createMerchant(input);
+    const merchant = await this.factory.createMerchant(user, input);
     return { ok: true, merchant };
   }
 

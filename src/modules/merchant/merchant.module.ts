@@ -10,6 +10,7 @@ import { UpdateMerchantUsecase } from './domain/usecase/update-merchant.usecase'
 import { MerchantSubscriber } from './infrastructure/typeorm/merchant.subscriber';
 import { CategoryModel } from './infrastructure/typeorm/model/category.model';
 import { CategorySubscriber } from './infrastructure/typeorm/category.subscriber';
+import { MerchantErrorService } from './domain/error/merchant-error.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MerchantModel, CategoryModel])],
@@ -19,6 +20,7 @@ import { CategorySubscriber } from './infrastructure/typeorm/category.subscriber
     { provide: 'MerchantRepository', useClass: TypeormMerchantRepository },
     MerchantSubscriber,
     CategorySubscriber,
+    MerchantErrorService,
     /** Usecases */
     CreateMerchantUsecase,
     FindMerchantsUsecase,
