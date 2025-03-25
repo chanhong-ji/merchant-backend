@@ -1,7 +1,8 @@
 import { UserRole } from '../user-role.enum';
 import { IUser } from '../interface/user.interface';
-import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { Verification } from './verification.entity';
+import { Order } from 'src/modules/order/domain/entity/order.entity';
 
 export class User implements IUser {
   id: number;
@@ -11,6 +12,8 @@ export class User implements IUser {
   address?: string;
   dongCode?: string;
   verified: boolean;
+  orders: Order[];
+  rides: Order[];
   merchants: Merchant[];
   verification?: Verification;
   createdAt: Date;
@@ -34,6 +37,10 @@ export class User implements IUser {
       }
     }
     return this;
+  }
+
+  roleIs(role: UserRole) {
+    return this.role === role;
   }
 }
 

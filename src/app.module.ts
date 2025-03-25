@@ -11,6 +11,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './config/configuration';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ProductModule } from './modules/product/product.module';
+import { RepositoryModule } from './infrastructure/typeorm/repository.module';
+import { ErrorModule } from './common/error/error.module';
+import { OrderModule } from './modules/order/order.module';
+import { AuthorizationModule } from './modules/authorization/authorization.module';
 
 @Module({
   imports: [
@@ -22,7 +27,7 @@ import { AuthModule } from './modules/auth/auth.module';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: process.env.NODE_ENV == 'dev' ? '.env.dev' : '.env.test',
       load: [configuration],
     }),
     TypeOrmModule.forRootAsync({
@@ -40,9 +45,14 @@ import { AuthModule } from './modules/auth/auth.module';
       inject: [ConfigService],
     }),
 
+    ErrorModule,
+    RepositoryModule,
     AuthModule,
     UserModule,
     MerchantModule,
+    ProductModule,
+    OrderModule,
+    AuthorizationModule,
   ],
 })
 export class AppModule {}

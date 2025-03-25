@@ -12,6 +12,8 @@ import { Request } from 'express';
 import { IS_PUBLIC_KEY } from '../decorator/public.decorator';
 import { Reflector } from '@nestjs/core';
 import { UserRepository } from 'src/modules/user/application/user.repository';
+import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
@@ -20,6 +22,7 @@ export class AuthenticationGuard implements CanActivate {
     private readonly configService: ConfigService,
     private reflector: Reflector,
     @Inject('UserRepository') private readonly userRepository: UserRepository,
+    private readonly errorService: ErrorService,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -36,7 +39,9 @@ export class AuthenticationGuard implements CanActivate {
     const token = this.extractTokenFromHeader(request);
 
     if (!token) {
-      throw new UnauthorizedException();
+      throw new CustomGraphQLError(this.errorService.get('NOT_AUTHENTICATED'), {
+        level: 'log',
+      });
     }
 
     try {
@@ -47,7 +52,9 @@ export class AuthenticationGuard implements CanActivate {
       const user = await this.userRepository.findById(userId);
       request['user'] = user;
     } catch {
-      throw new UnauthorizedException();
+      throw new CustomGraphQLError(this.errorService.get('NOT_AUTHENTICATED'), {
+        level: 'warn',
+      });
     }
     return true;
   }

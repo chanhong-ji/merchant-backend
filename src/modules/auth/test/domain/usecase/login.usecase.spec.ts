@@ -4,21 +4,21 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ILoginInput } from 'src/modules/auth/application/dto/login.dto';
 import { LoginUsecase } from 'src/modules/auth/domain/usecase/login.usecase';
 import { UserRepository } from 'src/modules/user/application/user.repository';
-import { UserErrorService } from 'src/modules/user/domain/error/user-error.service';
-import { TypeormUserRepository } from 'src/modules/user/infrastructure/typeorm/typeorm-user.repository';
-jest.mock('src/modules/user/infrastructure/typeorm/typeorm-user.repository');
+import { ErrorService } from 'src/common/error/error.service';
+import { TypeormUserRepository } from 'src/infrastructure/typeorm/repository/typeorm-user.repository';
+jest.mock('src/infrastructure/typeorm/repository/typeorm-user.repository');
 jest.mock('bcrypt');
 
 describe('LoginUsecase', () => {
   let usecase: LoginUsecase;
   let repository: Record<keyof UserRepository, jest.Mock>;
   let jwtService: JwtService;
-  let errorService: UserErrorService;
+  let errorService: ErrorService;
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         LoginUsecase,
-        UserErrorService,
+        ErrorService,
         JwtService,
         {
           provide: 'UserRepository',
@@ -29,7 +29,7 @@ describe('LoginUsecase', () => {
     usecase = module.get(LoginUsecase);
     repository = module.get('UserRepository');
     jwtService = module.get(JwtService);
-    errorService = module.get(UserErrorService);
+    errorService = module.get(ErrorService);
   });
   it('should be defined', () => {
     expect(usecase).toBeDefined();
@@ -52,9 +52,7 @@ describe('LoginUsecase', () => {
     it('존재하지 않는 사용자를 찾으려고 할 때 오류가 발생해야 한다', async () => {
       repository.findByEmail.mockResolvedValue(null);
 
-      await expect(usecase.findUser(input)).rejects.toThrow(
-        errorService.get('USER_NOT_FOUND'),
-      );
+      await expect(usecase.findUser(input)).rejects.toThrow(errorService.get('USER_NOT_FOUND'));
     });
   });
 
@@ -76,9 +74,7 @@ describe('LoginUsecase', () => {
     it('비밀번호가 일치하지 않을 때 오류가 발생해야 한다', async () => {
       (bcrypt.compare as jest.Mock).mockResolvedValue(false);
 
-      await expect(usecase.checkPassword(input, user)).rejects.toThrow(
-        errorService.get('PASSWORD_WRONG'),
-      );
+      await expect(usecase.checkPassword(input, user)).rejects.toThrow(errorService.get('PASSWORD_WRONG'));
     });
 
     it('비밀번호가 일치할 때 오류가 발생하지 않아야 한다', async () => {
