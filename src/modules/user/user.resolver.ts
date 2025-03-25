@@ -15,7 +15,7 @@ import {
   EditProfileInput,
   EditProfileOutput,
 } from './presentation/dto/edit-profile.dto';
-import { BaseOutput } from '../common/presentation/output/base.output';
+import { BaseOutput } from '../common/presentation/dto/base.dto';
 import { VerifyEmailInput } from './presentation/dto/verify-email.dto';
 
 @Resolver()

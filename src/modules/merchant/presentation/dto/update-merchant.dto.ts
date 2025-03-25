@@ -9,7 +9,7 @@ import {
 import { IUpdateMerchantInput } from '../../application/dto/update-merchant.dto';
 import { MerchantDto } from './merchant.dto';
 import { IsInt, IsOptional } from 'class-validator';
-import { BaseOutput } from 'src/modules/common/presentation/output/base.output';
+import { BaseOutput } from 'src/modules/common/presentation/dto/base.dto';
 
 @InputType()
 export class UpdateMerchantInput

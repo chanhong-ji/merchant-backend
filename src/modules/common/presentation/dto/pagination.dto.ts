@@ -3,7 +3,7 @@ import {
   IPaginationInput,
   IPaginationOutput,
 } from '../../application/dto/pagination.dto';
-import { BaseOutput } from '../output/base.output';
+import { BaseOutput } from './base.dto';
 
 @InputType()
 export class PaginationInput implements IPaginationInput {
