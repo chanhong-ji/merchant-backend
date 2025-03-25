@@ -9,6 +9,7 @@ import { FindAllCategoriesUsecase } from './domain/usecase/find-all-categories.u
 import { FindMerchantByCategoryUsecase } from './domain/usecase/find-merchant-by-category.usecase';
 import { SearchMerchantUsecase } from './domain/usecase/search-merchant.usecase';
 import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
+import { FindMerchantByIdUsecase } from './domain/usecase/find-merchant-by-id.usecase';
 
 @Module({
   imports: [RepositoryModule],
@@ -19,6 +20,7 @@ import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
     CategorySubscriber,
 
     /** Usecases */
+    FindMerchantByIdUsecase,
     CreateMerchantUsecase,
     UpdateMerchantUsecase,
     FindAllCategoriesUsecase,

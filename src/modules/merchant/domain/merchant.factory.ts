@@ -14,6 +14,8 @@ import {
   ISearchMerchantOutput,
 } from '../application/dto/search-merchant.dto';
 import { SearchMerchantUsecase } from './usecase/search-merchant.usecase';
+import { FindMerchantByIdUsecase } from './usecase/find-merchant-by-id.usecase';
+import { IFindMerchantByIdInput } from '../application/dto/find-merchant-by-id.dto';
 
 @Injectable()
 export class MerchantFactory {
@@ -23,8 +25,12 @@ export class MerchantFactory {
     private readonly findAllCategoriesUsecase: FindAllCategoriesUsecase,
     private readonly findMerchantByCategoryUsecase: FindMerchantByCategoryUsecase,
     private readonly searchMerchantUsecase: SearchMerchantUsecase,
+    private readonly findMerchantByIdUsecase: FindMerchantByIdUsecase,
   ) {}
 
+  findMerchantById(input: IFindMerchantByIdInput): Promise<Merchant> {
+    return this.findMerchantByIdUsecase.execute(input);
+  }
   createMerchant(user: User, input: ICreateMerchantInput): Promise<Merchant> {
     return this.createMerchantUsecase.execute(user, input);
   }

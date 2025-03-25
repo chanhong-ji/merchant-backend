@@ -20,10 +20,25 @@ import {
   SearchMerchantInput,
   SearchMerchantOutput,
 } from './presentation/dto/search-merchant.dto';
+import {
+  FindMerchantByIdInput,
+  FindMerchantByIdOutput,
+} from './presentation/dto/find-merchant-by-id.dto';
 
 @Resolver()
 export class MerchantResolver {
   constructor(private readonly factory: MerchantFactory) {}
+
+  @Query(() => FindMerchantByIdOutput)
+  async findMerchantById(
+    @Args('FindMerchantByIdInput') input: FindMerchantByIdInput,
+  ) {
+    const merchant = await this.factory.findMerchantById(input);
+    return {
+      ok: true,
+      merchant,
+    };
+  }
 
   @Mutation(() => CreateMerchantOutput)
   @Role(['Owner'])
