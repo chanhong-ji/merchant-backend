@@ -1,4 +1,4 @@
-import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
+import { CoreModel } from 'src/infrastructure/typeorm/model/core.model';
 import { ICategory } from 'src/modules/merchant/domain/interface/category.interface';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { MerchantModel } from './merchant.model';

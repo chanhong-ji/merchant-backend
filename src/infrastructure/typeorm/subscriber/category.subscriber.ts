@@ -4,8 +4,8 @@ import {
   LoadEvent,
   DataSource,
 } from 'typeorm';
-import { CategoryModel } from './model/category.model';
-import { Category } from '../../../modules/merchant/domain/entity/category.entity';
+import { CategoryModel } from '../model/category.model';
+import { Category } from 'src/modules/merchant/domain/entity/category.entity';
 
 @EventSubscriber()
 export class CategorySubscriber

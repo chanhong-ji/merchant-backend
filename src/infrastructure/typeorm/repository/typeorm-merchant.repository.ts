@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
-import { MerchantRepository } from '../../../modules/merchant/application/merchant.repository';
-import { MerchantModel } from './model/merchant.model';
-import { Merchant } from '../../../modules/merchant/domain/entity/merchant.entity';
-import { Category } from '../../../modules/merchant/domain/entity/category.entity';
-import { CategoryModel } from './model/category.model';
+import { MerchantRepository } from 'src/modules/merchant/application/repository/merchant.repository';
+import { MerchantModel } from '../model/merchant.model';
+import { CategoryModel } from '../model/category.model';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
+import { Category } from 'src/modules/merchant/domain/entity/category.entity';
 
 @Injectable()
 export class TypeormMerchantRepository implements MerchantRepository {
@@ -25,12 +25,6 @@ export class TypeormMerchantRepository implements MerchantRepository {
   }
   save(merchant: Merchant): Promise<Merchant> {
     return this.repository.save(merchant);
-  }
-  findCategoryById(id: number): Promise<Category | null> {
-    return this.categoryRepository.findOne({ where: { id } });
-  }
-  findAllCategories(): Promise<Category[]> {
-    return this.categoryRepository.find({ order: { id: 'ASC' } });
   }
   findAllByCategoryId(
     categoryId: number,

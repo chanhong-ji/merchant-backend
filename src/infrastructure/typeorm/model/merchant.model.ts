@@ -1,11 +1,11 @@
 import { Column, Entity, ManyToOne, OneToMany, RelationId } from 'typeorm';
-import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
-import { UserModel } from 'src/infrastructure/user/model/user.model';
+import { CoreModel } from 'src/infrastructure/typeorm/model/core.model';
+import { UserModel } from './user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
-import { CategoryModel } from 'src/modules/merchant/infrastructure/typeorm/model/category.model';
+import { CategoryModel } from './category.model';
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';
-import { ProductModel } from 'src/modules/product/infrastructure/typeorm/model/product.model';
+import { ProductModel } from './product.model';
 
 @Entity({ name: 'merchant' })
 export class MerchantModel extends CoreModel implements IMerchant {

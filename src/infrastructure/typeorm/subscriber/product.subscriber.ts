@@ -4,8 +4,8 @@ import {
   LoadEvent,
   DataSource,
 } from 'typeorm';
-import { ProductModel } from './model/product.model';
-import { Product } from '../../domain/entity/product.entity';
+import { ProductModel } from '../model/product.model';
+import { Product } from 'src/modules/product/domain/entity/product.entity';
 
 @EventSubscriber()
 export class ProductSubscriber

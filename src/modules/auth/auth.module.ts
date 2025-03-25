@@ -1,17 +1,19 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
 import { AuthFactory } from './domain/auth.factory';
 import { LoginUsecase } from './domain/usecase/login.usecase';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { AuthorizationGuard } from './guard/authorization.guard';
+import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
     UserModule,
+    RepositoryModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
       global: true,

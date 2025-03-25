@@ -1,6 +1,6 @@
-import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
+import { CoreModel } from 'src/infrastructure/typeorm/model/core.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
-import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/model/merchant.model';
+import { MerchantModel } from './merchant.model';
 import { Option } from 'src/modules/product/domain/entity/option.entity';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';

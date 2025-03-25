@@ -1,18 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductModel } from './infrastructure/typeorm/model/product.model';
 import { ProductFactory } from './domain/product.factory';
 import { ProductResolver } from './product.resolver';
-import { TypeormProductRepository } from './infrastructure/typeorm/typeorm-product.repository';
-import { ProductSubscriber } from './infrastructure/typeorm/product.subscriber';
+import { ProductSubscriber } from 'src/infrastructure/typeorm/subscriber/product.subscriber';
 import { ProductErrorService } from './domain/error/product-error.service';
+import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProductModel])],
+  imports: [RepositoryModule],
   providers: [
     ProductResolver,
     ProductFactory,
-    { provide: 'ProductRepository', useClass: TypeormProductRepository },
     ProductSubscriber,
     ProductErrorService,
   ],

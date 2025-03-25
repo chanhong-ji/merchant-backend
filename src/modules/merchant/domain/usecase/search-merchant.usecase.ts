@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { MerchantRepository } from '../../application/merchant.repository';
+import { MerchantRepository } from '../../application/repository/merchant.repository';
 import {
   ISearchMerchantInput,
   ISearchMerchantOutput,

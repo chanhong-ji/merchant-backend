@@ -1,14 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { MerchantRepository } from '../../application/merchant.repository';
 import { Category } from '../entity/category.entity';
+import { CategoryRepository } from '../../application/repository/category.repository';
 
 @Injectable()
 export class FindAllCategoriesUsecase {
   constructor(
-    @Inject('MerchantRepository')
-    private readonly repository: MerchantRepository,
+    @Inject('CategoryRepository')
+    private readonly repository: CategoryRepository,
   ) {}
   async execute(): Promise<Category[]> {
-    return this.repository.findAllCategories();
+    return this.repository.findAll();
   }
 }
