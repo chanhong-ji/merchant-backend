@@ -13,9 +13,21 @@ export class TypeormOrderRepository implements OrderRepository {
     private readonly repository: Repository<Order>,
   ) {}
 
-  findById(ids: number[]): Promise<Order[]> {
+  findByIds(ids: number[]): Promise<Order[]> {
     return this.repository.find({
       where: { id: In(ids) },
+    });
+  }
+
+  findById(id: number): Promise<Order | null> {
+    return this.repository.findOne({
+      where: { id },
+      relations: {
+        items: true,
+        merchant: true,
+        driver: true,
+        customer: true,
+      },
     });
   }
 

@@ -1,7 +1,7 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { IOrderItemOption } from '../../domain/interface/order-item-optin.interface';
 
-@ObjectType('OrderOption')
+@ObjectType('OrderItemOption')
 @InputType()
 export class OrderItemOptionDto implements IOrderItemOption {
   @Field(() => String, { description: '선택한 옵션 이름' })

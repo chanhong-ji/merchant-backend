@@ -4,6 +4,7 @@ import { OrderResolver } from './order.resolver';
 import { OrderFactory } from './domain/order.factory';
 import { CreateOrderUsecase } from './domain/usecase/create-order.usecase';
 import { FindOrdersUsecase } from './domain/usecase/find-orders.usecase';
+import { FindOrderUsecase } from './domain/usecase/find-order.usecase';
 
 @Module({
   imports: [RepositoryModule],
@@ -14,6 +15,7 @@ import { FindOrdersUsecase } from './domain/usecase/find-orders.usecase';
     /** Usecases */
     CreateOrderUsecase,
     FindOrdersUsecase,
+    FindOrderUsecase,
   ],
 })
 export class OrderModule {}

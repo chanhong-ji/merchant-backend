@@ -5,6 +5,7 @@ import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { Role } from '../auth/decorator/role.decorator';
 import { FindOrdersInput, FindOrdersOutput } from './presentation/dto/find-orders.dto';
 import { User } from '../user/domain/entity/user.entity';
+import { FindOrderInput, FindOrderOutput } from './presentation/dto/find-order.dto';
 
 @Resolver()
 export class OrderResolver {
@@ -27,6 +28,19 @@ export class OrderResolver {
     return {
       ok: true,
       orders,
+    };
+  }
+
+  @Query(() => FindOrderOutput)
+  @Role(['Client', 'Owner', 'Delivery'])
+  async findOrderDetail(
+    @Args('FindOrderInput') input: FindOrderInput,
+    @AuthUser() user: User,
+  ): Promise<FindOrderOutput> {
+    const order = await this.factory.findOrder(input, user);
+    return {
+      ok: true,
+      order,
     };
   }
 }

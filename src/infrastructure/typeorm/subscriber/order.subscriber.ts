@@ -1,9 +1,4 @@
-import {
-  DataSource,
-  EntitySubscriberInterface,
-  EventSubscriber,
-  LoadEvent,
-} from 'typeorm';
+import { DataSource, EntitySubscriberInterface, EventSubscriber, LoadEvent } from 'typeorm';
 import { OrderModel } from '../model/order.model';
 import { Order } from 'src/modules/order/domain/entity/order.entity';
 

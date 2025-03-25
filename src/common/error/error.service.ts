@@ -9,6 +9,7 @@ enum ErrorMessage {
   MERCHANT_NOT_FOUND = 'MERCHANT_NOT_FOUND',
   USER_NOT_FOUND = 'USER_NOT_FOUND',
   PRODUCT_NOT_FOUND = 'PRODUCT_NOT_FOUND',
+  ORDER_NOT_FOUND = 'ORDER_NOT_FOUND',
 
   PERMISSION_DENIED = 'PERMISSION_DENIED',
   PASSWORD_WRONG = 'PASSWORD_WRONG',
@@ -28,6 +29,7 @@ registerEnumType(ErrorMessage, {
     MERCHANT_NOT_FOUND: { description: '판매자를 찾을 수 없음' },
     USER_NOT_FOUND: { description: '유저를 찾을 수 없음' },
     PRODUCT_NOT_FOUND: { description: '상품을 찾을 수 없음' },
+    ORDER_NOT_FOUND: { description: '주문을 찾을 수 없음' },
 
     PERMISSION_DENIED: { description: '권한이 없음' },
     PASSWORD_WRONG: { description: '비밀번호가 틀림' },
@@ -45,6 +47,7 @@ export class ErrorService {
     NOT_AUTHORIZED: ErrorMessage.NOT_AUTHORIZED,
     CATEGORY_NOT_FOUND: ErrorMessage.CATEGORY_NOT_FOUND,
     MERCHANT_NOT_FOUND: ErrorMessage.MERCHANT_NOT_FOUND,
+    ORDER_NOT_FOUND: ErrorMessage.ORDER_NOT_FOUND,
     PERMISSION_DENIED: ErrorMessage.PERMISSION_DENIED,
     EMAIL_ALREADY_EXIST: ErrorMessage.EMAIL_ALREADY_EXIST,
     PASSWORD_WRONG: ErrorMessage.PASSWORD_WRONG,

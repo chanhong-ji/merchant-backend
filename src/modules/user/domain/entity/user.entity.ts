@@ -38,6 +38,10 @@ export class User implements IUser {
     }
     return this;
   }
+
+  roleIs(role: UserRole) {
+    return this.role === role;
+  }
 }
 
 type UserAttributes = {

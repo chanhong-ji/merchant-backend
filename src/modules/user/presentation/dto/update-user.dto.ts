@@ -3,7 +3,7 @@ import { IUpdateUserInput } from '../../application/dto/update-user.dto';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
 import { User } from '../../domain/entity/user.entity';
-import { SimpleUserDto } from './simple-user.dto';
+import { DetailUserDto } from './detail-user.dto';
 
 @InputType()
 export class UpdateUserInput implements IUpdateUserInput {
@@ -20,6 +20,6 @@ export class UpdateUserInput implements IUpdateUserInput {
 
 @ObjectType()
 export class UpdateUserOutput extends BaseOutput {
-  @Field(() => SimpleUserDto, { nullable: true })
+  @Field(() => DetailUserDto, { nullable: true })
   user?: User;
 }

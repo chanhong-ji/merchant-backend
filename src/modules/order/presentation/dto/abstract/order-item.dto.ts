@@ -3,7 +3,7 @@ import { OrderItemOption } from 'src/modules/order/domain/entity/order-item-opti
 import { IOrderItem } from 'src/modules/order/domain/interface/order-item.interface';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { ProductDto } from 'src/modules/product/presentation/dto/abstract/product.dto';
-import { OrderItemOptionDto } from '../order-option.dto';
+import { OrderItemOptionDto } from '../order-item-option.dto';
 
 @ObjectType()
 @InputType({ isAbstract: true })

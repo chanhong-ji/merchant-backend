@@ -1,14 +1,10 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import {
-  ICreateOrderInput,
-  ICreateOrderOutput,
-  ICreateOrderProduct,
-} from '../../application/dto/create-order.dto';
+import { ICreateOrderInput, ICreateOrderOutput, ICreateOrderProduct } from '../../application/dto/create-order.dto';
 import { Order } from '../../domain/entity/order.entity';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { SimpleOrderDto } from './simple-order.dto';
 import { OrderItemOption } from '../../domain/entity/order-item-option.entity';
-import { OrderItemOptionDto } from './order-option.dto';
+import { OrderItemOptionDto } from './order-item-option.dto';
 
 @InputType()
 export class CreateOrderItem implements ICreateOrderProduct {
@@ -38,10 +34,7 @@ export class CreateOrderInput implements ICreateOrderInput {
 }
 
 @ObjectType()
-export class CreateOrderOutput
-  extends BaseOutput
-  implements ICreateOrderOutput
-{
+export class CreateOrderOutput extends BaseOutput implements ICreateOrderOutput {
   @Field(() => SimpleOrderDto, { nullable: true, description: '생성된 주문' })
   order?: Order;
 }

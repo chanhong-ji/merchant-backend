@@ -21,7 +21,6 @@ export class ProductFactory {
   removeProduct(id: number, user: User): Promise<void> {
     return this.removeProductUsecase.execute(id, user);
   }
-  //TODO : UpdateProduct 추가
   updateProduct(input: IUpdateProductInput, user: User): Promise<Product> {
     return this.updateProductUsecase.execute(input, user);
   }

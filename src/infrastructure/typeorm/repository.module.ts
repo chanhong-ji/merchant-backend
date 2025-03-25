@@ -17,6 +17,7 @@ import { MerchantSubscriber } from './subscriber/merchant.subscriber';
 import { ProductSubscriber } from './subscriber/product.subscriber';
 import { CategorySubscriber } from './subscriber/category.subscriber';
 import { OrderSubscriber } from './subscriber/order.subscriber';
+import { OrderItemSubscriber } from './subscriber/order-item.subscriber';
 
 @Module({
   imports: [
@@ -42,13 +43,8 @@ import { OrderSubscriber } from './subscriber/order.subscriber';
     ProductSubscriber,
     CategorySubscriber,
     OrderSubscriber,
+    OrderItemSubscriber,
   ],
-  exports: [
-    'MerchantRepository',
-    'ProductRepository',
-    'UserRepository',
-    'CategoryRepository',
-    'OrderRepository',
-  ],
+  exports: ['MerchantRepository', 'ProductRepository', 'UserRepository', 'CategoryRepository', 'OrderRepository'],
 })
 export class RepositoryModule {}
