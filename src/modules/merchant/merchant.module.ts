@@ -17,6 +17,7 @@ import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
     MerchantFactory,
     MerchantSubscriber,
     CategorySubscriber,
+
     /** Usecases */
     CreateMerchantUsecase,
     UpdateMerchantUsecase,

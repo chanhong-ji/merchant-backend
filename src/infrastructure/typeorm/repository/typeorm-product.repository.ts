@@ -11,4 +11,7 @@ export class TypeormProductRepository implements ProductRepository {
     @InjectRepository(ProductModel)
     private readonly repository: Repository<Product>,
   ) {}
+  save(product: Product): Promise<Product> {
+    return this.repository.save(product);
+  }
 }
