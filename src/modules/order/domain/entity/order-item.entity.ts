@@ -1,14 +1,11 @@
-import { IOrderItem, IOrderOption } from '../interface/order-item.interface';
+import { IOrderItem } from '../interface/order-item.interface';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
-
-export class OrderOption implements IOrderOption {
-  name: string;
-}
+import { OrderItemOption } from './order-item-option.entity';
 
 export class OrderItem implements IOrderItem {
   id: number;
   product: Product;
-  choices?: OrderOption[];
+  options?: OrderItemOption[];
   createdAt: Date;
   updatedAt: Date;
 }

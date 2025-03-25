@@ -1,13 +1,10 @@
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';
-
-export interface IOrderOption {
-  name: string;
-}
+import { IOrderItemOption } from './order-item-optin.interface';
 
 export interface IOrderItem {
   id: number;
   product: IProduct;
-  choices?: IOrderOption[];
+  options?: IOrderItemOption[];
   createdAt: Date;
   updatedAt: Date;
 }

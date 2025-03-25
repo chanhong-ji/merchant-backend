@@ -2,7 +2,6 @@ import { CoreModel } from 'src/infrastructure/typeorm/model/core.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { MerchantModel } from './merchant.model';
 import { ProductOption } from 'src/modules/product/domain/entity/product-option.entity';
-import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';
 import { Column, Entity, ManyToOne, RelationId } from 'typeorm';
 
@@ -28,6 +27,6 @@ export class ProductModel extends CoreModel implements IProduct {
   })
   merchant: Merchant;
 
-  @RelationId((product: Product) => product.merchant)
+  @RelationId((product: ProductModel) => product.merchant)
   merchantId: number;
 }

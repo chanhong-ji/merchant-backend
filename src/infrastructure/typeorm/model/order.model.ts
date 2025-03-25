@@ -29,7 +29,7 @@ export class OrderModel extends CoreModel implements IOrder {
   })
   merchant?: Merchant;
 
-  @ManyToMany(() => OrderItemModel)
+  @ManyToMany(() => OrderItemModel, { cascade: true })
   @JoinTable()
   items: OrderItem[];
 
