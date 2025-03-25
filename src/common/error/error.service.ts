@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { registerEnumType } from '@nestjs/graphql';
 
 enum ErrorMessage {
+  NOT_AUTHENTICATED = 'NOT_AUTHENTICATED',
+  NOT_AUTHORIZED = 'NOT_AUTHORIZED',
+
   CATEGORY_NOT_FOUND = 'CATEGORY_NOT_FOUND',
   MERCHANT_NOT_FOUND = 'MERCHANT_NOT_FOUND',
   USER_NOT_FOUND = 'USER_NOT_FOUND',
@@ -16,6 +19,9 @@ enum ErrorMessage {
 registerEnumType(ErrorMessage, {
   name: 'ErrorMessage',
   valuesMap: {
+    NOT_AUTHENTICATED: { description: '인증되지 않음' },
+    NOT_AUTHORIZED: { description: '권한이 없음' },
+
     CATEGORY_NOT_FOUND: { description: '카테고리를 찾을 수 없음' },
     MERCHANT_NOT_FOUND: { description: '판매자를 찾을 수 없음' },
     USER_NOT_FOUND: { description: '유저를 찾을 수 없음' },
@@ -31,6 +37,8 @@ registerEnumType(ErrorMessage, {
 @Injectable()
 export class ErrorService {
   private readonly messages: Record<keyof typeof ErrorMessage, ErrorMessage> = {
+    NOT_AUTHENTICATED: ErrorMessage.NOT_AUTHENTICATED,
+    NOT_AUTHORIZED: ErrorMessage.NOT_AUTHORIZED,
     CATEGORY_NOT_FOUND: ErrorMessage.CATEGORY_NOT_FOUND,
     MERCHANT_NOT_FOUND: ErrorMessage.MERCHANT_NOT_FOUND,
     PERMISSION_DENIED: ErrorMessage.PERMISSION_DENIED,

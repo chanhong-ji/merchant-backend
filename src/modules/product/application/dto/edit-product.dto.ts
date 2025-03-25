@@ -8,5 +8,5 @@ export interface IEditProductInput
 }
 
 export interface IEditProductOutput {
-  product: Product;
+  product?: Product;
 }

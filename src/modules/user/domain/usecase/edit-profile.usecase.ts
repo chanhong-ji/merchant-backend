@@ -5,6 +5,7 @@ import { User } from '../entity/user.entity';
 import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
 import { ConfigService } from '@nestjs/config';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class EditProfileUsecase {
@@ -22,7 +23,9 @@ export class EditProfileUsecase {
   async findUser(currUser: User) {
     const user = await this.repository.findById(currUser.id);
     if (!user) {
-      throw new Error(this.errorService.get('USER_NOT_FOUND'));
+      throw new CustomGraphQLError(this.errorService.get('USER_NOT_FOUND'), {
+        level: 'log',
+      });
     }
     return user;
   }

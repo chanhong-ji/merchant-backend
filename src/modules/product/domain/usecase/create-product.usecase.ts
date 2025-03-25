@@ -5,6 +5,7 @@ import { Product } from '../entity/product.entity';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { MerchantRepository } from 'src/modules/merchant/application/repository/merchant.repository';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class CreateProductUsecase {
@@ -19,7 +20,9 @@ export class CreateProductUsecase {
   async execute(input: ICreateProductInput, user: User): Promise<Product> {
     const merchant = await this.merchantRepo.findById(input.merchantId);
     if (merchant?.ownerId !== user.id) {
-      throw new Error(this.errorService.get('PERMISSION_DENIED'));
+      throw new CustomGraphQLError(this.errorService.get('PERMISSION_DENIED'), {
+        level: 'warn',
+      });
     }
     const product = Product.create({
       description: input.description,

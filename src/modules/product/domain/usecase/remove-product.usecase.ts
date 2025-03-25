@@ -3,6 +3,7 @@ import { ProductRepository } from '../../application/repository/product.reposito
 import { MerchantRepository } from 'src/modules/merchant/application/repository/merchant.repository';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class RemoveProductUsecase {
@@ -14,10 +15,14 @@ export class RemoveProductUsecase {
   async execute(id: number, user: User): Promise<void> {
     const product = await this.productRepo.findById(id);
     if (!product) {
-      throw new Error(this.error.get('PRODUCT_NOT_FOUND'));
+      throw new CustomGraphQLError(this.error.get('PRODUCT_NOT_FOUND'), {
+        level: 'log',
+      });
     }
     if (product.merchant.ownerId !== user.id) {
-      throw new Error(this.error.get('PERMISSION_DENIED'));
+      throw new CustomGraphQLError(this.error.get('PERMISSION_DENIED'), {
+        level: 'warn',
+      });
     }
     await this.productRepo.remove(id);
   }

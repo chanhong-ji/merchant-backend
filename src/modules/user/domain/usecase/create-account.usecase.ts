@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import { Verification } from '../entity/verification.entity';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class CreateAccountUsecase {
@@ -24,7 +25,12 @@ export class CreateAccountUsecase {
   async validateEmailDuplicate(input: ICreateAccountInput) {
     const existingUser = await this.repository.findByEmail(input.email);
     if (existingUser) {
-      throw new Error(this.errorService.get('EMAIL_ALREADY_EXIST'));
+      throw new CustomGraphQLError(
+        this.errorService.get('EMAIL_ALREADY_EXIST'),
+        {
+          level: 'log',
+        },
+      );
     }
   }
 

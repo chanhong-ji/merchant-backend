@@ -35,6 +35,6 @@ export class EditProductOutput
   extends BaseOutput
   implements IEditProductOutput
 {
-  @Field(() => SimpleProductDto)
-  product: Product;
+  @Field(() => SimpleProductDto, { nullable: true })
+  product?: Product;
 }

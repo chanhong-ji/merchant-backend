@@ -6,6 +6,7 @@ import {
 } from '../../application/dto/find-merchant-by-category.dto';
 import { CategoryRepository } from '../../application/repository/category.repository';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class FindMerchantByCategoryUsecase {
@@ -21,7 +22,10 @@ export class FindMerchantByCategoryUsecase {
   ): Promise<IFindMerchantByCategoryOutput> {
     const category = await this.merchantRepo.findById(input.categoryId);
     if (!category) {
-      throw new Error(this.errorService.get('CATEGORY_NOT_FOUND'));
+      throw new CustomGraphQLError(
+        this.errorService.get('CATEGORY_NOT_FOUND'),
+        { level: 'log' },
+      );
     }
     const merchants = await this.merchantRepo.findAllByCategoryId(
       category.id,

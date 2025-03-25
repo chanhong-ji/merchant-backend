@@ -5,6 +5,7 @@ import { Merchant } from '../entity/merchant.entity';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { CategoryRepository } from '../../application/repository/category.repository';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class CreateMerchantUsecase {
@@ -18,7 +19,10 @@ export class CreateMerchantUsecase {
   async execute(user: User, input: ICreateMerchantInput): Promise<Merchant> {
     const category = await this.categoryRepo.findById(input.categoryId);
     if (!category) {
-      throw new Error(this.errorService.get('CATEGORY_NOT_FOUND'));
+      throw new CustomGraphQLError(
+        this.errorService.get('CATEGORY_NOT_FOUND'),
+        { level: 'log' },
+      );
     }
     const merchant = Merchant.create(input);
     merchant.category = category;

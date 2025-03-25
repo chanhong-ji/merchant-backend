@@ -5,6 +5,7 @@ import { ILoginInput } from '../../application/dto/login.dto';
 import { UserRepository } from 'src/modules/user/application/user.repository';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class LoginUsecase {
@@ -25,7 +26,9 @@ export class LoginUsecase {
   async findUser(input: ILoginInput): Promise<User> {
     const user = await this.userRepository.findByEmail(input.email);
     if (user == null) {
-      throw new Error(this.errorService.get('USER_NOT_FOUND'));
+      throw new CustomGraphQLError(this.errorService.get('USER_NOT_FOUND'), {
+        level: 'log',
+      });
     }
     return user;
   }
@@ -33,7 +36,9 @@ export class LoginUsecase {
   async checkPassword(input: ILoginInput, user: User): Promise<void> {
     const isMatch = await bcrypt.compare(input.password, user.password);
     if (!isMatch) {
-      throw new Error(this.errorService.get('PASSWORD_WRONG'));
+      throw new CustomGraphQLError(this.errorService.get('PASSWORD_WRONG'), {
+        level: 'log',
+      });
     }
   }
 

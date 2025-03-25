@@ -3,6 +3,7 @@ import { IFindMerchantByIdInput } from '../../application/dto/find-merchant-by-i
 import { Merchant } from '../entity/merchant.entity';
 import { MerchantRepository } from '../../application/repository/merchant.repository';
 import { ErrorService } from 'src/common/error/error.service';
+import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
 export class FindMerchantByIdUsecase {
@@ -14,7 +15,10 @@ export class FindMerchantByIdUsecase {
   async execute(input: IFindMerchantByIdInput): Promise<Merchant> {
     const merchant = await this.merchantRepo.findById(input.id);
     if (!merchant) {
-      throw new Error(this.errorService.get('MERCHANT_NOT_FOUND'));
+      throw new CustomGraphQLError(
+        this.errorService.get('MERCHANT_NOT_FOUND'),
+        { level: 'log' },
+      );
     }
     return merchant;
   }
