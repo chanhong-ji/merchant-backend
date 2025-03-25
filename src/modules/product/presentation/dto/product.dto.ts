@@ -14,7 +14,6 @@ export class ProductDto implements IProduct {
 
   @Field(() => String)
   @IsString()
-  @Length(5)
   name: string;
 
   @Field(() => Int)
@@ -27,6 +26,7 @@ export class ProductDto implements IProduct {
   photo?: string;
 
   @Field(() => String)
+  @IsString()
   @Length(5, 140)
   description: string;
 
