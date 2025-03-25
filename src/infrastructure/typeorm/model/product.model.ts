@@ -1,7 +1,7 @@
 import { CoreModel } from 'src/infrastructure/typeorm/model/core.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { MerchantModel } from './merchant.model';
-import { Option } from 'src/modules/product/domain/entity/option.entity';
+import { ProductOption } from 'src/modules/product/domain/entity/product-option.entity';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';
 import { Column, Entity, ManyToOne, RelationId } from 'typeorm';
@@ -21,7 +21,7 @@ export class ProductModel extends CoreModel implements IProduct {
   description: string;
 
   @Column({ type: 'json' })
-  options: Option[];
+  options: ProductOption[];
 
   @ManyToOne(() => MerchantModel, (merchant) => merchant.products, {
     onDelete: 'CASCADE',

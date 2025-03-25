@@ -1,6 +1,6 @@
 import { IProduct } from '../interface/product.interface';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
-import { Option } from './option.entity';
+import { ProductOption } from './product-option.entity';
 
 export class Product implements IProduct {
   id: number;
@@ -8,7 +8,7 @@ export class Product implements IProduct {
   price: number;
   photo?: string;
   description: string;
-  options: Option[];
+  options: ProductOption[];
   merchant: Merchant;
   merchantId: number;
   createdAt: Date;
@@ -39,5 +39,5 @@ type ProductAttributes = {
   price: number;
   photo?: string;
   description: string;
-  options: Option[];
+  options: ProductOption[];
 };

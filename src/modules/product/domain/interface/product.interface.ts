@@ -1,5 +1,5 @@
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
-import { IOption } from './item.interface';
+import { IProductOption } from './product-option.interface';
 
 export interface IProduct {
   id: number;
@@ -7,7 +7,7 @@ export interface IProduct {
   price: number;
   photo?: string;
   description: string;
-  options: IOption[];
+  options: IProductOption[];
   merchant: IMerchant;
   merchantId: number;
   createdAt: Date;

@@ -1,10 +1,10 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { IOption } from '../../../domain/interface/item.interface';
+import { IProductOption } from '../../../domain/interface/product-option.interface';
 import { IsInt, IsString } from 'class-validator';
 
 @InputType({ isAbstract: true })
 @ObjectType('AbstractOptionDto')
-export class OptionDto implements IOption {
+export class ProductOptionDto implements IProductOption {
   @Field(() => String, { description: '옵션 이름' })
   @IsString()
   name: string;

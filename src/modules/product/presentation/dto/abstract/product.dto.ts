@@ -3,8 +3,8 @@ import { IsInt, IsOptional, IsString, Length } from 'class-validator';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { IProduct } from 'src/modules/product/domain/interface/product.interface';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/abstract/merchant.dto';
-import { Option } from 'src/modules/product/domain/entity/option.entity';
-import { OptionDto } from './option.dto';
+import { ProductOption } from 'src/modules/product/domain/entity/product-option.entity';
+import { ProductOptionDto } from './product-option.dto';
 
 @InputType({ isAbstract: true })
 @ObjectType()
@@ -30,8 +30,8 @@ export class ProductDto implements IProduct {
   @Length(5, 140)
   description: string;
 
-  @Field(() => [OptionDto], { nullable: true, description: '상품 옵션' })
-  options: Option[];
+  @Field(() => [ProductOptionDto], { nullable: true, description: '상품 옵션' })
+  options: ProductOption[];
 
   @Field(() => MerchantDto, { description: '상품 판매자' })
   merchant: Merchant;
