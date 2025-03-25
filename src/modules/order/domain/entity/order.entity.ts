@@ -41,6 +41,11 @@ export class Order implements IOrder {
     });
     return order;
   }
+
+  updateStatus(status: OrderStatus): Order {
+    this.status = status;
+    return this;
+  }
 }
 
 type OrderAttributes = {

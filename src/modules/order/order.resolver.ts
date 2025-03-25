@@ -6,6 +6,7 @@ import { Role } from '../auth/decorator/role.decorator';
 import { FindOrdersInput, FindOrdersOutput } from './presentation/dto/find-orders.dto';
 import { User } from '../user/domain/entity/user.entity';
 import { FindOrderInput, FindOrderOutput } from './presentation/dto/find-order.dto';
+import { UpdateOrderInput, UpdateOrderOutput } from './presentation/dto/update-order.dto';
 
 @Resolver()
 export class OrderResolver {
@@ -41,6 +42,19 @@ export class OrderResolver {
     return {
       ok: true,
       order,
+    };
+  }
+
+  @Mutation(() => UpdateOrderOutput)
+  @Role(['Client', 'Delivery', 'Owner'])
+  async updateOrder(
+    @Args('UpdateOrderInput') input: UpdateOrderInput,
+    @AuthUser() user: User,
+  ): Promise<UpdateOrderOutput> {
+    const order = await this.factory.updateOrder(input, user);
+    return {
+      ok: true,
+      id: order.id,
     };
   }
 }

@@ -7,6 +7,8 @@ import { FindOrdersUsecase } from './usecase/find-orders.usecase';
 import { IFindOrdersInput } from '../application/dto/find-orders.dto';
 import { FindOrderUsecase } from './usecase/find-order.usecase';
 import { IFindOrderInput } from '../application/dto/find-order.dto';
+import { IUpdateOrderInput } from '../application/dto/update-order.dto';
+import { UpdateOrderUsecase } from './usecase/update-order.usecase';
 
 @Injectable()
 export class OrderFactory {
@@ -14,6 +16,7 @@ export class OrderFactory {
     private readonly createOrderUsecase: CreateOrderUsecase,
     private readonly findOrdersUsecase: FindOrdersUsecase,
     private readonly findOrderUsecase: FindOrderUsecase,
+    private readonly updateOrderUsecase: UpdateOrderUsecase,
   ) {}
 
   createOrder(input: ICreateOrderInput, customer: User): Promise<Order> {
@@ -26,5 +29,9 @@ export class OrderFactory {
 
   findOrder(input: IFindOrderInput, user: User): Promise<Order> {
     return this.findOrderUsecase.execute(input, user);
+  }
+
+  updateOrder(input: IUpdateOrderInput, user: User): Promise<Order> {
+    return this.updateOrderUsecase.execute(input, user);
   }
 }

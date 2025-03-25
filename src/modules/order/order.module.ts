@@ -6,6 +6,7 @@ import { CreateOrderUsecase } from './domain/usecase/create-order.usecase';
 import { FindOrdersUsecase } from './domain/usecase/find-orders.usecase';
 import { FindOrderUsecase } from './domain/usecase/find-order.usecase';
 import { AuthorizationModule } from '../authorization/authorization.module';
+import { UpdateOrderUsecase } from './domain/usecase/update-order.usecase';
 
 @Module({
   imports: [RepositoryModule, AuthorizationModule],
@@ -17,6 +18,7 @@ import { AuthorizationModule } from '../authorization/authorization.module';
     CreateOrderUsecase,
     FindOrdersUsecase,
     FindOrderUsecase,
+    UpdateOrderUsecase,
   ],
 })
 export class OrderModule {}
