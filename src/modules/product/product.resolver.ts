@@ -31,7 +31,7 @@ export class ProductResolver {
   @Mutation(() => UpdateProductOutput)
   @Role(['Owner'])
   async updateProduct(
-    @Args('UpdateUserInput') input: UpdateProductInput,
+    @Args('UpdateProductInput') input: UpdateProductInput,
     @AuthUser() user: User,
   ): Promise<UpdateProductOutput> {
     const product = await this.factory.updateProduct(input, user);
