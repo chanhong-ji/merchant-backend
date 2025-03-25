@@ -1,4 +1,5 @@
 import { IUser } from 'src/modules/user/domain/interface/user.interface';
+import { ICategory } from './category.interface';
 
 export interface IMerchant {
   id: number;
@@ -8,5 +9,6 @@ export interface IMerchant {
   dongCode?: string;
   createdAt: Date;
   updatedAt: Date;
-  user: IUser;
+  owner: IUser;
+  category: ICategory;
 }

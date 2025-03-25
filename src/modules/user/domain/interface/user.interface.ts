@@ -1,4 +1,4 @@
-import { IMerchant } from 'src/modules/merchant/domain/merchant.interface';
+import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
 import { UserRole } from '../user-role.enum';
 import { IVerification } from './verification.interface';
 

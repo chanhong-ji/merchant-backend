@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { MerchantRepository } from '../../application/merchant.repository';
-import { MerchantModel } from './merchant.model';
-import { Merchant } from '../../domain/merchant.entity';
+import { MerchantModel } from './model/merchant.model';
+import { Merchant } from '../../domain/entity/merchant.entity';
 
 @Injectable()
 export class TypeormMerchantRepository implements MerchantRepository {

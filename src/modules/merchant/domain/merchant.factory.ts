@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Merchant } from './merchant.entity';
+import { Merchant } from './entity/merchant.entity';
 import { CreateMerchantUsecase } from './usecase/create-merchant.usecase';
 import { ICreateMerchantInput } from '../application/dto/create-merchant.dto';
 import { FindMerchantsUsecase } from './usecase/find-merchants.usecase';

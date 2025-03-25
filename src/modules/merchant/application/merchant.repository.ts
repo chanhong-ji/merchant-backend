@@ -1,4 +1,4 @@
-import { Merchant } from '../domain/merchant.entity';
+import { Merchant } from '../domain/entity/merchant.entity';
 
 export interface MerchantRepository {
   findAll(): Promise<Merchant[]>;

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ICreateMerchantInput } from '../../application/dto/create-merchant.dto';
 import { MerchantRepository } from '../../application/merchant.repository';
-import { Merchant } from '../merchant.entity';
+import { Merchant } from '../entity/merchant.entity';
 
 @Injectable()
 export class CreateMerchantUsecase {

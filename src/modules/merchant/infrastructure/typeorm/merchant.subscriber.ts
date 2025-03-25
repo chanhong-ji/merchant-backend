@@ -4,8 +4,8 @@ import {
   LoadEvent,
   DataSource,
 } from 'typeorm';
-import { MerchantModel } from './merchant.model';
-import { Merchant } from '../../domain/merchant.entity';
+import { MerchantModel } from './model/merchant.model';
+import { Merchant } from '../../domain/entity/merchant.entity';
 
 @EventSubscriber()
 export class MerchantSubscriber
