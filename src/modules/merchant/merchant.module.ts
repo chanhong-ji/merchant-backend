@@ -5,7 +5,6 @@ import { TypeormMerchantRepository } from './infrastructure/typeorm/typeorm-merc
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MerchantModel } from './infrastructure/typeorm/model/merchant.model';
 import { CreateMerchantUsecase } from './domain/usecase/create-merchant.usecase';
-import { FindMerchantsUsecase } from './domain/usecase/find-merchants.usecase';
 import { UpdateMerchantUsecase } from './domain/usecase/update-merchant.usecase';
 import { MerchantSubscriber } from './infrastructure/typeorm/merchant.subscriber';
 import { CategoryModel } from './infrastructure/typeorm/model/category.model';
@@ -23,7 +22,6 @@ import { MerchantErrorService } from './domain/error/merchant-error.service';
     MerchantErrorService,
     /** Usecases */
     CreateMerchantUsecase,
-    FindMerchantsUsecase,
     UpdateMerchantUsecase,
   ],
 })
