@@ -3,6 +3,7 @@ import { IMerchant } from '../../domain/interface/merchant.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
 import { UserDto } from 'src/modules/user/presentation/dto/user.dto';
 import { CategoryDto } from './category.dto';
+import { ProductDto } from 'src/modules/product/presentation/dto/product.dto';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -40,6 +41,9 @@ export class MerchantDto implements IMerchant {
 
   @Field(() => Int)
   ownerId: number;
+
+  @Field(() => [ProductDto])
+  products: ProductDto[];
 
   @Field(() => CategoryDto)
   category: CategoryDto;

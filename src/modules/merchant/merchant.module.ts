@@ -1,4 +1,4 @@
-import { Module, Sse } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { MerchantResolver } from './merchant.resolver';
 import { MerchantFactory } from './domain/merchant.factory';
 import { TypeormMerchantRepository } from './infrastructure/typeorm/typeorm-merchant.repository';
