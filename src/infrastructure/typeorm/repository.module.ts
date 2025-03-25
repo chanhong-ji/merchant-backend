@@ -10,6 +10,7 @@ import { CategoryModel } from './model/category.model';
 import { VerificationModel } from './model/verification.model';
 import { TypeormCategoryRepository } from './repository/typeorm-category.repository';
 import { OrderModel } from './model/order.model';
+import { OrderItemModel } from './model/order-item.model';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { OrderModel } from './model/order.model';
       CategoryModel,
       VerificationModel,
       OrderModel,
+      OrderItemModel,
     ]),
   ],
   providers: [
