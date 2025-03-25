@@ -6,7 +6,9 @@ import { IOrderItem } from './order-item.interface';
 export interface IOrder {
   id: number;
   customer?: IUser;
+  customerId?: number;
   driver?: IUser;
+  driverId?: number;
   merchant?: IMerchant;
   items: IOrderItem[];
   total: number;

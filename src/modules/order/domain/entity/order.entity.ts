@@ -10,7 +10,9 @@ import { IOrderItemOption } from '../interface/order-item-optin.interface';
 export class Order implements IOrder {
   id: number;
   customer?: User;
+  customerId?: number;
   driver?: User;
+  driverId?: number;
   merchant?: Merchant;
   items: OrderItem[];
   total: number;

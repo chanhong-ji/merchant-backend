@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, RelationId } from 'typeorm';
 import { CoreModel } from './core.model';
 import { IOrder } from 'src/modules/order/domain/interface/order.interface';
 import { User } from 'src/modules/user/domain/entity/user.entity';
@@ -17,11 +17,17 @@ export class OrderModel extends CoreModel implements IOrder {
   })
   customer?: User;
 
+  @RelationId((order: OrderModel) => order.customer)
+  customerId?: number;
+
   @ManyToOne(() => UserModel, (user) => user.rides, {
     onDelete: 'SET NULL',
     nullable: true,
   })
   driver?: User;
+
+  @RelationId((order: OrderModel) => order.driver)
+  driverId: number;
 
   @ManyToOne(() => MerchantModel, (merchant) => merchant.orders, {
     onDelete: 'SET NULL',
