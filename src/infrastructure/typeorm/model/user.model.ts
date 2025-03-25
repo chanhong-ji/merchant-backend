@@ -40,6 +40,7 @@ export class UserModel extends CoreModel implements IUser {
   merchants: Merchant[];
 
   @OneToOne(() => VerificationModel, (verification) => verification.user, {
+    cascade: true,
     onDelete: 'SET NULL',
     nullable: true,
   })

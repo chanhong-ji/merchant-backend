@@ -8,6 +8,7 @@ import { FindUserInput, FindUserOutput } from './presentation/dto/find-user.dto'
 import { UpdateUserInput, UpdateUserOutput } from './presentation/dto/update-user.dto';
 import { BaseOutput } from '../shared/presentation/dto/base.dto';
 import { VerifyEmailInput } from './presentation/dto/verify-email.dto';
+import { Role } from '../auth/decorator/role.decorator';
 
 @Resolver()
 export class UserResolver {
@@ -15,7 +16,7 @@ export class UserResolver {
 
   @Public()
   @Mutation(() => CreateUserOutput)
-  async createUser(@Args('createUserInput') input: CreateUserInput): Promise<CreateUserOutput> {
+  async createUser(@Args('CreateUserInput') input: CreateUserInput): Promise<CreateUserOutput> {
     const user = await this.factory.createUser(input);
     return {
       ok: true,
@@ -24,14 +25,14 @@ export class UserResolver {
   }
 
   @Query(() => FindUserOutput)
-  async findUser(@Args('findUserInput') input: FindUserInput): Promise<FindUserOutput> {
+  async findUser(@Args('FindUserInput') input: FindUserInput): Promise<FindUserOutput> {
     const user = await this.factory.findUser(input);
     return { ok: true, user };
   }
 
   @Mutation(() => UpdateUserOutput)
   async updateUser(
-    @Args('updateUserInput') input: UpdateUserInput,
+    @Args('UpdateUserInput') input: UpdateUserInput,
     @AuthUser() authUser: User,
   ): Promise<UpdateUserOutput> {
     const user = await this.factory.updateUser(input, authUser);
@@ -39,7 +40,7 @@ export class UserResolver {
   }
 
   @Mutation(() => BaseOutput)
-  async verifyEmail(@Args('verifyEmailInput') input: VerifyEmailInput, @AuthUser() user: User): Promise<BaseOutput> {
+  async verifyEmail(@Args('VerifyEmailInput') input: VerifyEmailInput, @AuthUser() user: User): Promise<BaseOutput> {
     await this.factory.verifyEmail(input, user);
     return { ok: true };
   }

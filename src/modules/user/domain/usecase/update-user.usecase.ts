@@ -6,6 +6,7 @@ import { IUpdateUserInput } from '../../application/dto/update-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { ErrorService } from 'src/common/error/error.service';
 import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
+import { Verification } from '../entity/verification.entity';
 
 @Injectable()
 export class UpdateUserUsecase {
@@ -33,6 +34,8 @@ export class UpdateUserUsecase {
   async updateUser(input: IUpdateUserInput, user: User): Promise<User> {
     if (input.email) {
       user.email = input.email;
+      user.verified = false;
+      user.verification = Verification.create(user);
     }
 
     if (input.password) {

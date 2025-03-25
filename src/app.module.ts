@@ -26,7 +26,7 @@ import { OrderModule } from './modules/order/order.module';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: process.env.NODE_ENV == 'dev' ? '.env.dev' : '.env.test',
       load: [configuration],
     }),
     TypeOrmModule.forRootAsync({
