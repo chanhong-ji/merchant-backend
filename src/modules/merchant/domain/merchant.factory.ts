@@ -9,6 +9,11 @@ import { FindAllCategoriesUsecase } from './usecase/find-all-categories.usecase'
 import { Category } from './entity/category.entity';
 import { FindMerchantByCategoryUsecase } from './usecase/find-merchant-by-category.usecase';
 import { IFindMerchantByCategoryInput } from '../application/dto/find-merchant-by-category.dto';
+import {
+  ISearchMerchantInput,
+  ISearchMerchantOutput,
+} from '../application/dto/search-merchant.dto';
+import { SearchMerchantUsecase } from './usecase/search-merchant.usecase';
 
 @Injectable()
 export class MerchantFactory {
@@ -17,27 +22,26 @@ export class MerchantFactory {
     private readonly updateMerchantUsecase: UpdateMerchantUsecase,
     private readonly findAllCategoriesUsecase: FindAllCategoriesUsecase,
     private readonly findMerchantByCategoryUsecase: FindMerchantByCategoryUsecase,
+    private readonly searchMerchantUsecase: SearchMerchantUsecase,
   ) {}
 
-  async createMerchant(
-    user: User,
-    input: ICreateMerchantInput,
-  ): Promise<Merchant> {
+  createMerchant(user: User, input: ICreateMerchantInput): Promise<Merchant> {
     return this.createMerchantUsecase.execute(user, input);
   }
 
-  async updateMerchant(
-    user: User,
-    input: IUpdateMerchantInput,
-  ): Promise<Merchant> {
+  updateMerchant(user: User, input: IUpdateMerchantInput): Promise<Merchant> {
     return this.updateMerchantUsecase.execute(user, input);
   }
 
-  async findAllCategories(): Promise<Category[]> {
+  findAllCategories(): Promise<Category[]> {
     return this.findAllCategoriesUsecase.execute();
   }
 
-  async findMerchantByCategory(input: IFindMerchantByCategoryInput) {
+  findMerchantByCategory(input: IFindMerchantByCategoryInput) {
     return this.findMerchantByCategoryUsecase.execute(input);
+  }
+
+  searchMerchant(input: ISearchMerchantInput): Promise<ISearchMerchantOutput> {
+    return this.searchMerchantUsecase.execute(input);
   }
 }

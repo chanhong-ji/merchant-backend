@@ -16,6 +16,10 @@ import {
   FindMerchantByCategoryInput,
   FindMerchantByCategoryOutput,
 } from './presentation/dto/find-merchant-by-category.dto';
+import {
+  SearchMerchantInput,
+  SearchMerchantOutput,
+} from './presentation/dto/search-merchant.dto';
 
 @Resolver()
 export class MerchantResolver {
@@ -56,6 +60,18 @@ export class MerchantResolver {
   ) {
     const { total, merchants } =
       await this.factory.findMerchantByCategory(input);
+    return {
+      ok: true,
+      total,
+      merchants,
+    };
+  }
+
+  @Query(() => SearchMerchantOutput)
+  async searchMerchant(
+    @Args('SearchMerchantInput') input: SearchMerchantInput,
+  ) {
+    const { total, merchants } = await this.factory.searchMerchant(input);
     return {
       ok: true,
       total,

@@ -11,5 +11,10 @@ export interface MerchantRepository {
     page: number,
     limit: number,
   ): Promise<Merchant[]>;
+  searchByName(
+    name: string,
+    page: number,
+    limit: number,
+  ): Promise<[Merchant[], number]>;
   countByCategoryId(categoryId: number): Promise<number>;
 }

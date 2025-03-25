@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { MerchantRepository } from '../../application/merchant.repository';
 import { MerchantModel } from './model/merchant.model';
 import { Merchant } from '../../domain/entity/merchant.entity';
@@ -43,6 +43,19 @@ export class TypeormMerchantRepository implements MerchantRepository {
       skip: (page - 1) * limit,
     });
   }
+
+  searchByName(
+    name: string,
+    page: number,
+    limit: number,
+  ): Promise<[Merchant[], number]> {
+    return this.repository.findAndCount({
+      where: { name: Like(`%${name}%`) },
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  }
+
   countByCategoryId(categoryId: number): Promise<number> {
     return this.repository.count({ where: { category: { id: categoryId } } });
   }

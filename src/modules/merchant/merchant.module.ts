@@ -12,6 +12,7 @@ import { CategorySubscriber } from './infrastructure/typeorm/category.subscriber
 import { MerchantErrorService } from './domain/error/merchant-error.service';
 import { FindAllCategoriesUsecase } from './domain/usecase/find-all-categories.usecase';
 import { FindMerchantByCategoryUsecase } from './domain/usecase/find-merchant-by-category.usecase';
+import { SearchMerchantUsecase } from './domain/usecase/search-merchant.usecase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MerchantModel, CategoryModel])],
@@ -27,6 +28,7 @@ import { FindMerchantByCategoryUsecase } from './domain/usecase/find-merchant-by
     UpdateMerchantUsecase,
     FindAllCategoriesUsecase,
     FindMerchantByCategoryUsecase,
+    SearchMerchantUsecase,
   ],
 })
 export class MerchantModule {}

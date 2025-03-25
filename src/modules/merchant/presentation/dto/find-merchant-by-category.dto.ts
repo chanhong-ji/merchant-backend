@@ -4,7 +4,7 @@ import {
   IFindMerchantByCategoryInput,
   IFindMerchantByCategoryOutput,
 } from '../../application/dto/find-merchant-by-category.dto';
-import { SimpleMerchantDto } from './simple.dto';
+import { SimpleMerchantDto } from './simple-merchant.dto';
 import {
   PaginationInput,
   PaginationOutput,
