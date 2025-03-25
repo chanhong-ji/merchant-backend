@@ -1,4 +1,9 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  CanActivate,
+  ExecutionContext,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AllowedRoles } from '../decorator/role.decorator';
 import { GqlExecutionContext } from '@nestjs/graphql';
@@ -14,20 +19,16 @@ export class AuthorizationGuard implements CanActivate {
       context.getHandler(),
     );
 
-    console.log(roles, 'roles1');
-
     if (!roles) {
       return true;
     }
 
     const gqlContext = GqlExecutionContext.create(context).getContext();
-    const user: User = gqlContext['user'];
-    if (!user) {
-      return false;
-    }
+    const user: User = gqlContext.req['user'];
 
-    console.log(user.role, 'role');
-    console.log(roles, 'roles');
+    if (!user) {
+      throw new UnauthorizedException('권한 부족');
+    }
 
     return roles.includes(user.role);
   }

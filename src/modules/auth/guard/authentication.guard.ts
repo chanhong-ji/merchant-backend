@@ -36,7 +36,7 @@ export class AuthenticationGuard implements CanActivate {
     const token = this.extractTokenFromHeader(request);
 
     if (!token) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('인증 실패');
     }
 
     try {
@@ -47,7 +47,7 @@ export class AuthenticationGuard implements CanActivate {
       const user = await this.userRepository.findById(userId);
       request['user'] = user;
     } catch {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('인증 실패');
     }
     return true;
   }
