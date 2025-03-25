@@ -1,7 +1,8 @@
-import { Field, InputType, ObjectType, Parent } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { ICategory } from '../../../domain/interface/category.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/abstract/merchant.dto';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -27,7 +28,7 @@ export class CategoryDto implements ICategory {
   slug: string;
 
   @Field(() => [MerchantDto], { description: '판매자 목록' })
-  merchants: MerchantDto[];
+  merchants: Merchant[];
 
   @Field(() => Date, { description: '생성일' })
   createdAt: Date;

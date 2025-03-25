@@ -3,7 +3,7 @@ import {
   ICreateProductInput,
   ICreateProductOutput,
 } from '../../application/dto/create-product.dto';
-import { ProductDto } from './product.dto';
+import { ProductDto } from './abstract/product.dto';
 import { IsInt } from 'class-validator';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 

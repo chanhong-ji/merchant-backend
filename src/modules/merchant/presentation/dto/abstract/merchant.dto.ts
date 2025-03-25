@@ -1,11 +1,14 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { IMerchant } from '../../../domain/interface/merchant.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
-import { UserDto } from 'src/modules/user/presentation/dto/user.dto';
+import { UserDto } from 'src/modules/user/presentation/dto/abstract/user.dto';
 import { CategoryDto } from './category.dto';
-import { ProductDto } from 'src/modules/product/presentation/dto/product.dto';
+import { ProductDto } from 'src/modules/product/presentation/dto/abstract/product.dto';
 import { Order } from 'src/modules/order/domain/entity/order.entity';
-import { OrderDto } from 'src/modules/order/application/dto/order.dto';
+import { OrderDto } from 'src/modules/order/presentation/dto/abstract/order.dto';
+import { User } from 'src/modules/user/domain/entity/user.entity';
+import { Product } from 'src/modules/product/domain/entity/product.entity';
+import { Category } from 'src/modules/merchant/domain/entity/category.entity';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -32,24 +35,24 @@ export class MerchantDto implements IMerchant {
   @IsOptional()
   dongCode?: string;
 
-  @Field(() => Date)
-  createdAt: Date;
+  @Field(() => UserDto, { description: '주인' })
+  owner: User;
 
-  @Field(() => Date)
-  updatedAt: Date;
-
-  @Field(() => UserDto)
-  owner: UserDto;
-
-  @Field(() => OrderDto)
+  @Field(() => OrderDto, { description: '주문 목록' })
   orders: Order[];
 
   @Field(() => Int)
   ownerId: number;
 
   @Field(() => [ProductDto], { description: '상품 목록' })
-  products: ProductDto[];
+  products: Product[];
 
   @Field(() => CategoryDto, { description: '카테고리' })
-  category: CategoryDto;
+  category: Category;
+
+  @Field(() => Date, { description: '생성일' })
+  createdAt: Date;
+
+  @Field(() => Date, { description: '수정일' })
+  updatedAt: Date;
 }

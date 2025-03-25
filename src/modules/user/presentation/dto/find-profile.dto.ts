@@ -12,7 +12,7 @@ import {
 } from '../../application/dto/find-profile.dto';
 import { IsInt } from 'class-validator';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
-import { UserDto } from './user.dto';
+import { UserDto } from './abstract/user.dto';
 
 @InputType()
 export class FindProfileInput implements IFindProfileInput {

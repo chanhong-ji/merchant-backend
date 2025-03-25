@@ -10,7 +10,7 @@ import {
   IEditProductInput,
   IEditProductOutput,
 } from '../../application/dto/edit-product.dto';
-import { ProductDto } from './product.dto';
+import { ProductDto } from './abstract/product.dto';
 import { Product } from '../../domain/entity/product.entity';
 import { SimpleProductDto } from './simple-product.dto';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';

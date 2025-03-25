@@ -1,11 +1,11 @@
-import { IOrder } from '../../domain/interface/order.interface';
-import { OrderStatus } from '../../domain/enum/order-status.enum';
+import { IOrder } from '../../../domain/interface/order.interface';
+import { OrderStatus } from '../../../domain/enum/order-status.enum';
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { UserDto } from 'src/modules/user/presentation/dto/user.dto';
+import { UserDto } from 'src/modules/user/presentation/dto/abstract/user.dto';
 import { Product } from 'src/modules/product/domain/entity/product.entity';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { User } from 'src/modules/user/domain/entity/user.entity';
-import { ProductDto } from 'src/modules/product/presentation/dto/product.dto';
+import { ProductDto } from 'src/modules/product/presentation/dto/abstract/product.dto';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/abstract/merchant.dto';
 
 @ObjectType()

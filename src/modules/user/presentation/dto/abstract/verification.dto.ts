@@ -1,7 +1,8 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
-import { IVerification } from '../../domain/interface/verification.interface';
+import { IVerification } from '../../../domain/interface/verification.interface';
 import { IsString } from 'class-validator';
 import { UserDto } from './user.dto';
+import { User } from 'src/modules/user/domain/entity/user.entity';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -10,7 +11,7 @@ export class VerificationDto implements IVerification {
   id: number;
 
   @Field(() => UserDto, { description: '유저' })
-  user: UserDto;
+  user: User;
 
   @Field(() => String, { description: '인증 코드' })
   @IsString()

@@ -1,11 +1,12 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/abstract/merchant.dto';
-import { IUser } from '../../domain/interface/user.interface';
-import { UserRole } from '../../domain/user-role.enum';
+import { IUser } from '../../../domain/interface/user.interface';
+import { UserRole } from '../../../domain/user-role.enum';
 import { IsEmail, IsEnum, IsString } from 'class-validator';
 import { VerificationDto } from './verification.dto';
 import { Order } from 'src/modules/order/domain/entity/order.entity';
-import { OrderDto } from 'src/modules/order/application/dto/order.dto';
+import { OrderDto } from 'src/modules/order/presentation/dto/abstract/order.dto';
+
 @ObjectType()
 @InputType({ isAbstract: true })
 export class UserDto implements IUser {

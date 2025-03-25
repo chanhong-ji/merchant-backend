@@ -1,5 +1,5 @@
-import { ArgsType, ObjectType, PickType } from '@nestjs/graphql';
-import { ProductDto } from 'src/modules/product/presentation/dto/product.dto';
+import { ObjectType, PickType } from '@nestjs/graphql';
+import { ProductDto } from './abstract/product.dto';
 
 @ObjectType()
 export class SimpleProductDto extends PickType(

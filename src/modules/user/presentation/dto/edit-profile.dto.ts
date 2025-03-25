@@ -1,7 +1,7 @@
 import { Field, InputType, ObjectType, OmitType } from '@nestjs/graphql';
 import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
-import { UserDto } from './user.dto';
+import { UserDto } from './abstract/user.dto';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
 import { User } from '../../domain/entity/user.entity';
 
