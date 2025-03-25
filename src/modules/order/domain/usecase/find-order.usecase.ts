@@ -6,11 +6,13 @@ import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 import { ErrorService } from 'src/common/error/error.service';
 import { UserRole } from 'src/modules/user/domain/user-role.enum';
 import { Order } from '../entity/order.entity';
+import { AuthorizationService } from 'src/modules/authorization/domain/authorization.service';
 
 @Injectable()
 export class FindOrderUsecase {
   constructor(
     @Inject('OrderRepository') private readonly repository: OrderRepository,
+    private readonly authorizationService: AuthorizationService,
     private readonly errorService: ErrorService,
   ) {}
   async execute(input: IFindOrderInput, user: User): Promise<Order> {
@@ -19,6 +21,13 @@ export class FindOrderUsecase {
     if (!order) {
       throw new CustomGraphQLError(this.errorService.get('ORDER_NOT_FOUND'), { level: 'log' });
     }
+
+    await this.authorizationService.verifyPermission({
+      resource: order,
+      userId: user.id,
+      action: 'read',
+      userRole: user.role,
+    });
 
     if (user.roleIs(UserRole.Client)) {
       if (order.customerId !== user.id) {

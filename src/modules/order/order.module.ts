@@ -5,9 +5,10 @@ import { OrderFactory } from './domain/order.factory';
 import { CreateOrderUsecase } from './domain/usecase/create-order.usecase';
 import { FindOrdersUsecase } from './domain/usecase/find-orders.usecase';
 import { FindOrderUsecase } from './domain/usecase/find-order.usecase';
+import { AuthorizationModule } from '../authorization/authorization.module';
 
 @Module({
-  imports: [RepositoryModule],
+  imports: [RepositoryModule, AuthorizationModule],
   providers: [
     OrderResolver,
     OrderFactory,
