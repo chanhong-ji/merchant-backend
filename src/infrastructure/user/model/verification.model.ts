@@ -1,6 +1,6 @@
-import { IVerification } from '../../../domain/interface/verification.interface';
+import { IVerification } from '../../../modules/user/domain/interface/verification.interface';
 import { Column, Entity, Generated, OneToOne } from 'typeorm';
-import { UserModel } from 'src/modules/user/infrastructure/typeorm/model/user.model';
+import { UserModel } from 'src/infrastructure/user/model/user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
 

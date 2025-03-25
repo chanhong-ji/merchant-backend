@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, OneToMany, RelationId } from 'typeorm';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
-import { UserModel } from 'src/modules/user/infrastructure/typeorm/model/user.model';
+import { UserModel } from 'src/infrastructure/user/model/user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { CategoryModel } from 'src/modules/merchant/infrastructure/typeorm/model/category.model';
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';

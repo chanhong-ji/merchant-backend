@@ -5,7 +5,7 @@ import { UserRepository } from 'src/modules/user/application/user.repository';
 import { UserErrorService } from 'src/modules/user/domain/error/user-error.service';
 import { CreateAccountUsecase } from 'src/modules/user/domain/usecase/create-account.usecase';
 import { UserRole } from 'src/modules/user/domain/user-role.enum';
-import { TypeormUserRepository } from 'src/modules/user/infrastructure/typeorm/typeorm-user.repository';
+import { TypeormUserRepository } from 'src/infrastructure/user/repository-impl/typeorm-user.repository';
 import * as bcrypt from 'bcrypt';
 jest.mock('src/modules/user/infrastructure/typeorm/typeorm-user.repository');
 

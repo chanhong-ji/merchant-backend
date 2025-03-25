@@ -5,7 +5,7 @@ import {
   DataSource,
 } from 'typeorm';
 import { CategoryModel } from './model/category.model';
-import { Category } from '../../domain/entity/category.entity';
+import { Category } from '../../../modules/merchant/domain/entity/category.entity';
 
 @EventSubscriber()
 export class CategorySubscriber

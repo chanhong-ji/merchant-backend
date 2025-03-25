@@ -5,7 +5,7 @@ import {
   DataSource,
 } from 'typeorm';
 import { MerchantModel } from './model/merchant.model';
-import { Merchant } from '../../domain/entity/merchant.entity';
+import { Merchant } from '../../../modules/merchant/domain/entity/merchant.entity';
 
 @EventSubscriber()
 export class MerchantSubscriber

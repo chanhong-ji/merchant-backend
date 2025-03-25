@@ -1,8 +1,8 @@
-import { IUser } from '../../../domain/interface/user.interface';
-import { UserRole } from '../../../domain/user-role.enum';
+import { IUser } from '../../../modules/user/domain/interface/user.interface';
+import { UserRole } from '../../../modules/user/domain/user-role.enum';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
 import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
-import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/model/merchant.model';
+import { MerchantModel } from 'src/infrastructure/merchant/model/merchant.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { VerificationModel } from './verification.model';
 

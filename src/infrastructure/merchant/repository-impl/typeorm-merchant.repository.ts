@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
-import { MerchantRepository } from '../../application/merchant.repository';
+import { MerchantRepository } from '../../../modules/merchant/application/merchant.repository';
 import { MerchantModel } from './model/merchant.model';
-import { Merchant } from '../../domain/entity/merchant.entity';
-import { Category } from '../../domain/entity/category.entity';
+import { Merchant } from '../../../modules/merchant/domain/entity/merchant.entity';
+import { Category } from '../../../modules/merchant/domain/entity/category.entity';
 import { CategoryModel } from './model/category.model';
 
 @Injectable()

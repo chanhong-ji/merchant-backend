@@ -5,7 +5,7 @@ import { ILoginInput } from 'src/modules/auth/application/dto/login.dto';
 import { LoginUsecase } from 'src/modules/auth/domain/usecase/login.usecase';
 import { UserRepository } from 'src/modules/user/application/user.repository';
 import { UserErrorService } from 'src/modules/user/domain/error/user-error.service';
-import { TypeormUserRepository } from 'src/modules/user/infrastructure/typeorm/typeorm-user.repository';
+import { TypeormUserRepository } from 'src/infrastructure/user/repository-impl/typeorm-user.repository';
 jest.mock('src/modules/user/infrastructure/typeorm/typeorm-user.repository');
 jest.mock('bcrypt');
 
