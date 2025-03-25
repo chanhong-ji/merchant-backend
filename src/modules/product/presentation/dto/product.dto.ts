@@ -3,6 +3,8 @@ import { IsInt, IsString, Length } from 'class-validator';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { IProduct } from '../../domain/interface/product.interface';
 import { MerchantDto } from 'src/modules/merchant/presentation/dto/merchant.dto';
+import { Option } from '../../domain/entity/option.entity';
+import { OptionDto } from './option.dto';
 
 @InputType({ isAbstract: true })
 @ObjectType()
@@ -26,6 +28,9 @@ export class ProductDto implements IProduct {
   @Field(() => String)
   @Length(5, 140)
   description: string;
+
+  @Field(() => [OptionDto], { nullable: true })
+  options: Option[];
 
   @Field(() => MerchantDto)
   merchant: Merchant;
