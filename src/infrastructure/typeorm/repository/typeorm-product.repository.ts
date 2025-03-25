@@ -11,7 +11,16 @@ export class TypeormProductRepository implements ProductRepository {
     @InjectRepository(ProductModel)
     private readonly repository: Repository<Product>,
   ) {}
+  findById(id: number): Promise<Product | null> {
+    return this.repository.findOne({
+      where: { id },
+      relations: { merchant: true },
+    });
+  }
   save(product: Product): Promise<Product> {
     return this.repository.save(product);
+  }
+  async remove(id: number): Promise<void> {
+    await this.repository.delete(id);
   }
 }

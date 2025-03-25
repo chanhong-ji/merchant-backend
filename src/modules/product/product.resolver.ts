@@ -7,6 +7,7 @@ import {
 import { Role } from '../auth/decorator/role.decorator';
 import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { User } from '../user/domain/entity/user.entity';
+import { BaseOutput } from '../shared/presentation/dto/base.dto';
 
 @Resolver()
 export class ProductResolver {
@@ -20,5 +21,15 @@ export class ProductResolver {
   ): Promise<CreateProductOutput> {
     const product = await this.factory.createProduct(input, user);
     return { ok: true, productId: product.id };
+  }
+
+  @Mutation(() => BaseOutput)
+  @Role(['Owner'])
+  async removeProduct(
+    @Args('id') id: number,
+    @AuthUser() user: User,
+  ): Promise<BaseOutput> {
+    await this.factory.removeProduct(id, user);
+    return { ok: true };
   }
 }
