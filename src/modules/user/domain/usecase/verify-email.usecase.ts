@@ -20,12 +20,9 @@ export class VerifyEmailUsecase {
     }
 
     if (user.verification?.code !== code) {
-      throw new CustomGraphQLError(
-        this.errorService.get('VERIFICATION_CODE_WRONG'),
-        {
-          level: 'log',
-        },
-      );
+      throw new CustomGraphQLError(this.errorService.get('VERIFICATION_CODE_WRONG'), {
+        level: 'log',
+      });
     }
 
     user.verified = true;

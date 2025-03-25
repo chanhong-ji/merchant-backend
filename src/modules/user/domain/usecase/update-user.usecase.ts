@@ -2,22 +2,22 @@ import { Inject, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UserRepository } from '../../application/user.repository';
 import { User } from '../entity/user.entity';
-import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
+import { IUpdateUserInput } from '../../application/dto/update-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { ErrorService } from 'src/common/error/error.service';
 import { CustomGraphQLError } from 'src/common/error/custom-graphql-error';
 
 @Injectable()
-export class EditProfileUsecase {
+export class UpdateUserUsecase {
   constructor(
     @Inject('UserRepository') private readonly repository: UserRepository,
     private readonly errorService: ErrorService,
     private readonly configService: ConfigService,
   ) {}
 
-  async execute(input: IEditProfileInput, currUser: User): Promise<User> {
+  async execute(input: IUpdateUserInput, currUser: User): Promise<User> {
     const user = await this.findUser(currUser);
-    return await this.editUser(input, user);
+    return await this.updateUser(input, user);
   }
 
   async findUser(currUser: User) {
@@ -30,7 +30,7 @@ export class EditProfileUsecase {
     return user;
   }
 
-  async editUser(input: IEditProfileInput, user: User): Promise<User> {
+  async updateUser(input: IUpdateUserInput, user: User): Promise<User> {
     if (input.email) {
       user.email = input.email;
     }
@@ -43,9 +43,6 @@ export class EditProfileUsecase {
   }
 
   createHashedPassword(password: string): Promise<string> {
-    return bcrypt.hash(
-      password,
-      this.configService.get<number>('auth.bcrypt.salt') ?? 10,
-    );
+    return bcrypt.hash(password, this.configService.get<number>('auth.bcrypt.salt') ?? 10);
   }
 }

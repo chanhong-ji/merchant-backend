@@ -1,9 +1,9 @@
 import { IUser } from '../../domain/interface/user.interface';
 
-export interface IFindProfileInput {
+export interface IFindUserInput {
   userId: number;
 }
 
-export interface IFindProfileOutput {
+export interface IFindUserOutput {
   user?: Pick<IUser, 'email' | 'role' | 'address' | 'verified' | 'dongCode'>;
 }

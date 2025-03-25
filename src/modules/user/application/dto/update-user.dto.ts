@@ -1,4 +1,4 @@
-export interface IEditProfileInput {
+export interface IUpdateUserInput {
   email?: string;
   password?: string;
 }

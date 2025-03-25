@@ -1,12 +1,12 @@
 import { Field, InputType, ObjectType, OmitType } from '@nestjs/graphql';
-import { IEditProfileInput } from '../../application/dto/edit-profile.dto';
+import { IUpdateUserInput } from '../../application/dto/update-user.dto';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { UserDto } from './abstract/user.dto';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
 import { User } from '../../domain/entity/user.entity';
 
 @InputType()
-export class EditProfileInput implements IEditProfileInput {
+export class UpdateUserInput implements IUpdateUserInput {
   @Field(() => String, { nullable: true })
   @IsOptional()
   @IsEmail()
@@ -19,10 +19,10 @@ export class EditProfileInput implements IEditProfileInput {
 }
 
 @ObjectType()
-export class EditUser extends OmitType(UserDto, ['password'], ObjectType) {}
+export class UpdateUser extends OmitType(UserDto, ['password'], ObjectType) {}
 
 @ObjectType()
-export class EditProfileOutput extends BaseOutput {
-  @Field(() => EditUser, { nullable: true })
+export class UpdateUserOutput extends BaseOutput {
+  @Field(() => UpdateUser, { nullable: true })
   user?: User;
 }

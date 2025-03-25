@@ -1,17 +1,11 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { ProductFactory } from './domain/product.factory';
-import {
-  CreateProductInput,
-  CreateProductOutput,
-} from './presentation/dto/create-product.dto';
+import { CreateProductInput, CreateProductOutput } from './presentation/dto/create-product.dto';
 import { Role } from '../auth/decorator/role.decorator';
 import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { User } from '../user/domain/entity/user.entity';
 import { BaseOutput } from '../shared/presentation/dto/base.dto';
-import {
-  EditProductInput,
-  EditProductOutput,
-} from './presentation/dto/edit-product.dto';
+import { UpdateProductInput, UpdateProductOutput } from './presentation/dto/update-product.dto';
 
 @Resolver()
 export class ProductResolver {
@@ -29,21 +23,18 @@ export class ProductResolver {
 
   @Mutation(() => BaseOutput)
   @Role(['Owner'])
-  async removeProduct(
-    @Args('id') id: number,
-    @AuthUser() user: User,
-  ): Promise<BaseOutput> {
+  async removeProduct(@Args('id') id: number, @AuthUser() user: User): Promise<BaseOutput> {
     await this.factory.removeProduct(id, user);
     return { ok: true };
   }
 
-  @Mutation(() => EditProductOutput)
+  @Mutation(() => UpdateProductOutput)
   @Role(['Owner'])
-  async editProduct(
-    @Args('EditProfileInput') input: EditProductInput,
+  async updateProduct(
+    @Args('UpdateUserInput') input: UpdateProductInput,
     @AuthUser() user: User,
-  ): Promise<EditProductOutput> {
-    const product = await this.factory.editProduct(input, user);
+  ): Promise<UpdateProductOutput> {
+    const product = await this.factory.updateProduct(input, user);
     return { ok: true, product };
   }
 }

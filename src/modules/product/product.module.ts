@@ -5,7 +5,7 @@ import { ProductSubscriber } from 'src/infrastructure/typeorm/subscriber/product
 import { RepositoryModule } from 'src/infrastructure/typeorm/repository.module';
 import { CreateProductUsecase } from './domain/usecase/create-product.usecase';
 import { RemoveProductUsecase } from './domain/usecase/remove-product.usecase';
-import { EditProductUsecase } from './domain/usecase/edit-product.usecase';
+import { UpdateProductUsecase } from './domain/usecase/update-product.usecase';
 
 @Module({
   imports: [RepositoryModule],
@@ -16,7 +16,7 @@ import { EditProductUsecase } from './domain/usecase/edit-product.usecase';
     /** Usecase */
     CreateProductUsecase,
     RemoveProductUsecase,
-    EditProductUsecase,
+    UpdateProductUsecase,
   ],
 })
 export class ProductModule {}
