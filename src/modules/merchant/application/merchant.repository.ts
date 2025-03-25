@@ -6,4 +6,10 @@ export interface MerchantRepository {
   save(merchant: Merchant): Promise<Merchant>;
   findCategoryById(id: number): Promise<Category | null>;
   findAllCategories(): Promise<Category[]>;
+  findAllByCategoryId(
+    categoryId: number,
+    page: number,
+    limit: number,
+  ): Promise<Merchant[]>;
+  countByCategoryId(categoryId: number): Promise<number>;
 }

@@ -2,7 +2,6 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { IMerchant } from '../../domain/interface/merchant.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
 import { UserDto } from 'src/modules/user/presentation/dto/user.dto';
-import { ICategory } from '../../domain/interface/category.interface';
 import { CategoryDto } from './category.dto';
 
 @ObjectType()

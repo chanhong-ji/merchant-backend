@@ -32,4 +32,18 @@ export class TypeormMerchantRepository implements MerchantRepository {
   findAllCategories(): Promise<Category[]> {
     return this.categoryRepository.find({ order: { id: 'ASC' } });
   }
+  findAllByCategoryId(
+    categoryId: number,
+    page: number,
+    limit: number,
+  ): Promise<Merchant[]> {
+    return this.repository.find({
+      where: { category: { id: categoryId } },
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  }
+  countByCategoryId(categoryId: number): Promise<number> {
+    return this.repository.count({ where: { category: { id: categoryId } } });
+  }
 }

@@ -1,5 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { MerchantFactory } from '../merchant/domain/merchant.factory';
+import { AuthUser } from '../auth/decorator/auth-user.decorator';
+import { User } from '../user/domain/entity/user.entity';
+import { Role } from '../auth/decorator/role.decorator';
+import { FindAllCategoriesOutput } from './presentation/dto/find-all-categories.dto';
 import {
   CreateMerchantInput,
   CreateMerchantOutput,
@@ -8,10 +12,10 @@ import {
   UpdateMerchantInput,
   UpdateMerchantOutput,
 } from './presentation/dto/update-merchant.dto';
-import { AuthUser } from '../auth/decorator/auth-user.decorator';
-import { User } from '../user/domain/entity/user.entity';
-import { Role } from '../auth/decorator/role.decorator';
-import { FindAllCategoriesOutput } from './presentation/dto/find-all-categories.dto';
+import {
+  FindMerchantByCategoryInput,
+  FindMerchantByCategoryOutput,
+} from './presentation/dto/find-merchant-by-category.dto';
 
 @Resolver()
 export class MerchantResolver {
@@ -43,6 +47,19 @@ export class MerchantResolver {
     return {
       ok: true,
       categories,
+    };
+  }
+
+  @Query(() => FindMerchantByCategoryOutput)
+  async findMerchantByCategory(
+    @Args('FindMerchantByCategoryInput') input: FindMerchantByCategoryInput,
+  ) {
+    const { total, merchants } =
+      await this.factory.findMerchantByCategory(input);
+    return {
+      ok: true,
+      total,
+      merchants,
     };
   }
 }

@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Sse } from '@nestjs/common';
 import { MerchantResolver } from './merchant.resolver';
 import { MerchantFactory } from './domain/merchant.factory';
 import { TypeormMerchantRepository } from './infrastructure/typeorm/typeorm-merchant.repository';
@@ -11,6 +11,7 @@ import { CategoryModel } from './infrastructure/typeorm/model/category.model';
 import { CategorySubscriber } from './infrastructure/typeorm/category.subscriber';
 import { MerchantErrorService } from './domain/error/merchant-error.service';
 import { FindAllCategoriesUsecase } from './domain/usecase/find-all-categories.usecase';
+import { FindMerchantByCategoryUsecase } from './domain/usecase/find-merchant-by-category.usecase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MerchantModel, CategoryModel])],
@@ -25,6 +26,7 @@ import { FindAllCategoriesUsecase } from './domain/usecase/find-all-categories.u
     CreateMerchantUsecase,
     UpdateMerchantUsecase,
     FindAllCategoriesUsecase,
+    FindMerchantByCategoryUsecase,
   ],
 })
 export class MerchantModule {}
