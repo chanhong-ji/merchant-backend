@@ -26,7 +26,10 @@ export class MerchantFactory {
     return this.findMerchantsUsecase.execute();
   }
 
-  async updateMerchant(input: IUpdateMerchantInput): Promise<Merchant> {
-    return this.updateMerchantUsecase.execute(input);
+  async updateMerchant(
+    user: User,
+    input: IUpdateMerchantInput,
+  ): Promise<Merchant> {
+    return this.updateMerchantUsecase.execute(user, input);
   }
 }

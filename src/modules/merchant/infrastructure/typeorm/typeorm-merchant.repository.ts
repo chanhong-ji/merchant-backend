@@ -19,7 +19,9 @@ export class TypeormMerchantRepository implements MerchantRepository {
     return this.repository.find();
   }
   findById(id: number): Promise<Merchant | null> {
-    return this.repository.findOne({ where: { id } });
+    return this.repository.findOne({
+      where: { id },
+    });
   }
   save(merchant: Merchant): Promise<Merchant> {
     return this.repository.save(merchant);

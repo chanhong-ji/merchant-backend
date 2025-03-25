@@ -4,7 +4,6 @@ import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model'
 import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/model/merchant.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
-import { Verification } from 'src/modules/user/domain/entity/verification.entity';
 import { VerificationModel } from './verification.model';
 
 @Entity({ name: 'user' })
@@ -21,7 +20,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ type: 'enum', enum: UserRole, default: UserRole.Client })
   role: UserRole;
 
   @Column({ name: 'dong_code', nullable: true })

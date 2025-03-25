@@ -38,8 +38,9 @@ export class MerchantResolver {
   @Role(['Owner'])
   async updateMerchant(
     @Args('UpdateMerchantInput') input: UpdateMerchantInput,
+    @AuthUser() user: User,
   ): Promise<UpdateMerchantOutput> {
-    const merchant = await this.factory.updateMerchant(input);
-    return { ok: true, merchant };
+    const merchant = await this.factory.updateMerchant(user, input);
+    return { ok: true, merchantId: merchant.id };
   }
 }

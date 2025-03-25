@@ -13,6 +13,7 @@ export class Merchant implements IMerchant {
   createdAt: Date;
   updatedAt: Date;
   owner: User;
+  ownerId: number;
   category: Category;
 
   static create(input: MerchantAttributes) {

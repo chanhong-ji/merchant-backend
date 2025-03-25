@@ -8,7 +8,7 @@ import {
 } from '@nestjs/graphql';
 import { IUpdateMerchantInput } from '../../application/dto/update-merchant.dto';
 import { MerchantDto } from './merchant.dto';
-import { IsInt } from 'class-validator';
+import { IsInt, IsOptional } from 'class-validator';
 import { BaseOutput } from 'src/modules/common/presentation/output/base.output';
 
 @InputType()
@@ -22,10 +22,15 @@ export class UpdateMerchantInput
   @Field(() => Int)
   @IsInt()
   id: number;
+
+  @Field(() => Int, { nullable: true, description: '카테고리 아이디' })
+  @IsOptional()
+  @IsInt()
+  categoryId?: number;
 }
 
 @ObjectType()
 export class UpdateMerchantOutput extends BaseOutput {
-  @Field(() => MerchantDto)
-  merchant: MerchantDto;
+  @Field(() => Number)
+  merchantId: number;
 }

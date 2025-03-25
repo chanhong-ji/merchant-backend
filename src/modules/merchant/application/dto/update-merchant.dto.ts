@@ -5,4 +5,5 @@ export interface IUpdateMerchantInput
     Pick<IMerchant, 'name' | 'address' | 'coverImage' | 'dongCode'>
   > {
   id: number;
+  categoryId?: number;
 }

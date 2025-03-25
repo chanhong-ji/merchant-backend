@@ -39,6 +39,9 @@ export class MerchantDto implements IMerchant {
   @Field(() => UserDto)
   owner: UserDto;
 
+  @Field(() => Int)
+  ownerId: number;
+
   @Field(() => CategoryDto)
   category: CategoryDto;
 }

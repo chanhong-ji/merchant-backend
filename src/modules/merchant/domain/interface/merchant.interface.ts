@@ -10,5 +10,6 @@ export interface IMerchant {
   createdAt: Date;
   updatedAt: Date;
   owner: IUser;
+  ownerId: number;
   category: ICategory;
 }
