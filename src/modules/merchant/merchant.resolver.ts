@@ -11,6 +11,7 @@ import {
 import { AuthUser } from '../auth/decorator/auth-user.decorator';
 import { User } from '../user/domain/entity/user.entity';
 import { Role } from '../auth/decorator/role.decorator';
+import { FindAllCategoriesOutput } from './presentation/dto/find-all-categories.dto';
 
 @Resolver()
 export class MerchantResolver {
@@ -34,5 +35,14 @@ export class MerchantResolver {
   ): Promise<UpdateMerchantOutput> {
     const merchant = await this.factory.updateMerchant(user, input);
     return { ok: true, merchantId: merchant.id };
+  }
+
+  @Query(() => FindAllCategoriesOutput)
+  async findAllCategories() {
+    const categories = await this.factory.findAllCategories();
+    return {
+      ok: true,
+      categories,
+    };
   }
 }

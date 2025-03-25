@@ -5,4 +5,5 @@ export interface MerchantRepository {
   findById(id: number): Promise<Merchant | null>;
   save(merchant: Merchant): Promise<Merchant>;
   findCategoryById(id: number): Promise<Category | null>;
+  findAllCategories(): Promise<Category[]>;
 }
