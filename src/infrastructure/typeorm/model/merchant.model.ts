@@ -4,8 +4,11 @@ import { UserModel } from './user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
 import { CategoryModel } from './category.model';
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
-import { IProduct } from 'src/modules/product/domain/interface/product.interface';
 import { ProductModel } from './product.model';
+import { Order } from 'src/modules/order/domain/entity/order.entity';
+import { OrderModel } from './order.model';
+import { Product } from 'src/modules/product/domain/entity/product.entity';
+import { Category } from 'src/modules/merchant/domain/entity/category.entity';
 
 @Entity({ name: 'merchant' })
 export class MerchantModel extends CoreModel implements IMerchant {
@@ -30,9 +33,12 @@ export class MerchantModel extends CoreModel implements IMerchant {
   @RelationId((merchant: MerchantModel) => merchant.owner)
   ownerId: number;
 
-  @OneToMany((type) => ProductModel, (product) => product.merchant)
-  products: IProduct[];
+  @OneToMany(() => ProductModel, (product) => product.merchant)
+  products: Product[];
 
-  @ManyToOne((type) => CategoryModel, (category) => category.merchants)
-  category: CategoryModel;
+  @OneToMany(() => OrderModel, (order) => order.merchant)
+  orders: Order[];
+
+  @ManyToOne(() => CategoryModel, (category) => category.merchants)
+  category: Category;
 }

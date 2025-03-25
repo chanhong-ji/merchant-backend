@@ -5,6 +5,8 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 import { MerchantModel } from './merchant.model';
 import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { VerificationModel } from './verification.model';
+import { OrderModel } from './order.model';
+import { Order } from 'src/modules/order/domain/entity/order.entity';
 
 @Entity({ name: 'user' })
 export class UserModel extends CoreModel implements IUser {
@@ -16,6 +18,12 @@ export class UserModel extends CoreModel implements IUser {
 
   @Column({ nullable: true })
   address: string;
+
+  @OneToMany(() => OrderModel, (order) => order.products)
+  orders: Order[];
+
+  @OneToMany(() => OrderModel, (order) => order.driver)
+  rides: Order[];
 
   @Column()
   password: string;

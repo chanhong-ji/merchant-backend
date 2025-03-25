@@ -1,6 +1,6 @@
 import { ArgsType, Field, ObjectType, PickType } from '@nestjs/graphql';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
-import { CategoryDto } from './category.dto';
+import { CategoryDto } from './abstract/category.dto';
 
 @ObjectType()
 class FindAllCategory extends PickType(

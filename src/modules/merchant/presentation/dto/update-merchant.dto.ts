@@ -7,7 +7,7 @@ import {
   PickType,
 } from '@nestjs/graphql';
 import { IUpdateMerchantInput } from '../../application/dto/update-merchant.dto';
-import { MerchantDto } from './merchant.dto';
+import { MerchantDto } from './abstract/merchant.dto';
 import { IsInt, IsOptional } from 'class-validator';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 

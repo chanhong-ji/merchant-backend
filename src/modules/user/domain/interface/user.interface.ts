@@ -1,6 +1,7 @@
 import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
 import { UserRole } from '../user-role.enum';
 import { IVerification } from './verification.interface';
+import { IOrder } from 'src/modules/order/domain/interface/order.interface';
 
 export interface IUser {
   id: number;
@@ -12,6 +13,8 @@ export interface IUser {
   dongCode?: string;
   merchants: IMerchant[];
   verification?: IVerification;
+  orders: IOrder[];
+  rides: IOrder[];
   createdAt: Date;
   updatedAt: Date;
 }

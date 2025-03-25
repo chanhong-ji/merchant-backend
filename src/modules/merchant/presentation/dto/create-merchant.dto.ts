@@ -3,7 +3,7 @@ import {
   ICreateMerchantInput,
   ICreateMerchantOutput,
 } from '../../application/dto/create-merchant.dto';
-import { MerchantDto } from './merchant.dto';
+import { MerchantDto } from './abstract/merchant.dto';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { IsInt } from 'class-validator';
 import { SimpleMerchantDto } from './simple-merchant.dto';

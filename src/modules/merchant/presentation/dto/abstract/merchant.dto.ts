@@ -1,9 +1,11 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { IMerchant } from '../../domain/interface/merchant.interface';
+import { IMerchant } from '../../../domain/interface/merchant.interface';
 import { IsInt, IsOptional, IsString } from 'class-validator';
 import { UserDto } from 'src/modules/user/presentation/dto/user.dto';
 import { CategoryDto } from './category.dto';
 import { ProductDto } from 'src/modules/product/presentation/dto/product.dto';
+import { Order } from 'src/modules/order/domain/entity/order.entity';
+import { OrderDto } from 'src/modules/order/application/dto/order.dto';
 
 @ObjectType()
 @InputType({ isAbstract: true })
@@ -39,12 +41,15 @@ export class MerchantDto implements IMerchant {
   @Field(() => UserDto)
   owner: UserDto;
 
+  @Field(() => OrderDto)
+  orders: Order[];
+
   @Field(() => Int)
   ownerId: number;
 
-  @Field(() => [ProductDto])
+  @Field(() => [ProductDto], { description: '상품 목록' })
   products: ProductDto[];
 
-  @Field(() => CategoryDto)
+  @Field(() => CategoryDto, { description: '카테고리' })
   category: CategoryDto;
 }
