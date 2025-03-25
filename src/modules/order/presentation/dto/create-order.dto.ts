@@ -7,16 +7,19 @@ import {
 import { Order } from '../../domain/entity/order.entity';
 import { BaseOutput } from 'src/modules/shared/presentation/dto/base.dto';
 import { SimpleOrderDto } from './simple-order.dto';
-import { OrderOption } from '../../domain/entity/order-item.entity';
-import { OrderOptionDto } from './order-option.dto';
+import { OrderItemOption } from '../../domain/entity/order-item-option.entity';
+import { OrderItemOptionDto } from './order-option.dto';
 
-@ObjectType()
-export class CreateOrderProduct implements ICreateOrderProduct {
+@InputType()
+export class CreateOrderItem implements ICreateOrderProduct {
   @Field(() => Int, { description: '상품 아이디' })
   productId: number;
 
-  @Field(() => [OrderOptionDto], { nullable: true, description: '선택 옵션' })
-  choices?: OrderOption[];
+  @Field(() => [OrderItemOptionDto], {
+    nullable: true,
+    description: '선택 옵션',
+  })
+  options?: OrderItemOption[];
 }
 
 @InputType()
@@ -30,8 +33,8 @@ export class CreateOrderInput implements ICreateOrderInput {
   @Field(() => String, { nullable: true, description: '동 코드' })
   dongCode?: string;
 
-  @Field(() => [CreateOrderProduct], { description: '상품 목록' })
-  products: CreateOrderProduct[];
+  @Field(() => [CreateOrderItem], { description: '상품 목록' })
+  items: CreateOrderItem[];
 }
 
 @ObjectType()

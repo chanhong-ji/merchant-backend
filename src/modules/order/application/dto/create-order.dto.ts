@@ -1,14 +1,14 @@
 import { Order } from '../../domain/entity/order.entity';
-import { OrderOption } from '../../domain/entity/order-item.entity';
+import { OrderItemOption } from '../../domain/entity/order-item-option.entity';
 
 export interface ICreateOrderProduct {
   productId: number;
-  choices?: OrderOption[];
+  options?: OrderItemOption[];
 }
 
 export interface ICreateOrderInput {
   merchantId: number;
-  products: ICreateOrderProduct[];
+  items: ICreateOrderProduct[];
   address: string;
   dongCode?: string;
 }

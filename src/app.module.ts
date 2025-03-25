@@ -14,6 +14,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProductModule } from './modules/product/product.module';
 import { RepositoryModule } from './infrastructure/typeorm/repository.module';
 import { ErrorModule } from './common/error/error.module';
+import { OrderModule } from './modules/order/order.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { ErrorModule } from './common/error/error.module';
     UserModule,
     MerchantModule,
     ProductModule,
+    OrderModule,
   ],
 })
 export class AppModule {}

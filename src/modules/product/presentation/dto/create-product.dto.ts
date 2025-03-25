@@ -26,6 +26,6 @@ export class CreateProductOutput
   extends BaseOutput
   implements ICreateProductOutput
 {
-  @Field(() => Int, { description: '생성된 상품 아이디' })
-  productId: number;
+  @Field(() => Int, { description: '생성된 상품 아이디', nullable: true })
+  productId?: number;
 }

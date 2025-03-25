@@ -14,6 +14,8 @@ enum ErrorMessage {
   PASSWORD_WRONG = 'PASSWORD_WRONG',
   EMAIL_ALREADY_EXIST = 'EMAIL_ALREADY_EXIST',
   VERIFICATION_CODE_WRONG = 'VERIFICATION_CODE_WRONG',
+
+  INVALID_PRODUCT = 'INVALID_PRODUCT',
 }
 
 registerEnumType(ErrorMessage, {
@@ -31,6 +33,8 @@ registerEnumType(ErrorMessage, {
     PASSWORD_WRONG: { description: '비밀번호가 틀림' },
     EMAIL_ALREADY_EXIST: { description: '유저를 찾을 수 없음' },
     VERIFICATION_CODE_WRONG: { description: '인증 코드가 틀림' },
+
+    INVALID_PRODUCT: { description: '유효하지 않은 상품' },
   },
 });
 
@@ -47,6 +51,7 @@ export class ErrorService {
     USER_NOT_FOUND: ErrorMessage.USER_NOT_FOUND,
     VERIFICATION_CODE_WRONG: ErrorMessage.VERIFICATION_CODE_WRONG,
     PRODUCT_NOT_FOUND: ErrorMessage.PRODUCT_NOT_FOUND,
+    INVALID_PRODUCT: ErrorMessage.INVALID_PRODUCT,
   };
 
   get = (key: keyof typeof ErrorMessage): string => {

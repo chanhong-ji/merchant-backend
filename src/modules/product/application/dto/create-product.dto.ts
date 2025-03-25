@@ -6,5 +6,5 @@ export interface ICreateProductInput
 }
 
 export interface ICreateProductOutput {
-  productId: number;
+  productId?: number;
 }
