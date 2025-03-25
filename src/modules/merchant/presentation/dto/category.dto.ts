@@ -22,6 +22,10 @@ export class CategoryDto implements ICategory {
   @IsOptional()
   coverImg?: string;
 
+  @Field((type) => String, { description: '카테고리 슬러그' })
+  @IsString()
+  slug: string;
+
   @Field((type) => [MerchantDto], { description: '판매자 목록' })
   merchants: MerchantDto[];
 

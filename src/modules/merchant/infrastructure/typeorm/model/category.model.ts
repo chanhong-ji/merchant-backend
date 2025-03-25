@@ -11,6 +11,9 @@ export class CategoryModel extends CoreModel implements ICategory {
   @Column({ nullable: true, name: 'cover_image' })
   coverImg?: string;
 
+  @Column({ unique: true })
+  slug: string;
+
   @OneToMany((type) => MerchantModel, (merchant) => merchant.category)
   merchants: MerchantModel[];
 }

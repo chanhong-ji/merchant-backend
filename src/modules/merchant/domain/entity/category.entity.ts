@@ -5,6 +5,7 @@ export class Category implements ICategory {
   id: number;
   name: string;
   coverImg?: string;
+  slug: string;
   merchants: Merchant[];
   createdAt: Date;
   updatedAt: Date;
