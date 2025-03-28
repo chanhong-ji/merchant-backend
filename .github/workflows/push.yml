@@ -11,7 +11,7 @@ permissions:
 env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: merchant-repository
-  ECS_SERVICE: merchant-service
+  ECS_SERVICE: merchant-service-1
   ECS_CLUSTER: merchant-cluster
   ECS_TASK_DEFINITION: ./task-definition.json
   CONTAINER_NAME: merchant
