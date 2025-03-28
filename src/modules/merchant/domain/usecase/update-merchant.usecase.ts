@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { MerchantRepository } from '../../application/merchant.repository';
 import { IUpdateMerchantInput } from '../../application/dto/update-merchant.dto';
-import { Merchant } from '../merchant.entity';
+import { Merchant } from '../entity/merchant.entity';
 
 @Injectable()
 export class UpdateMerchantUsecase {

@@ -5,6 +5,7 @@ import {
 } from '../../application/dto/create-merchant.dto';
 import { MerchantDto } from './merchant.dto';
 import { BaseOutput } from 'src/modules/common/presentation/output/base.output';
+import { IsInt } from 'class-validator';
 
 @InputType('CreateMerchantInput')
 export class CreateMerchantInput
@@ -13,7 +14,12 @@ export class CreateMerchantInput
     ['name', 'address', 'coverImage', 'dongCode'],
     InputType,
   )
-  implements ICreateMerchantInput {}
+  implements ICreateMerchantInput
+{
+  @Field(() => Number)
+  @IsInt()
+  categoryId: number;
+}
 
 @ObjectType()
 export class CreateMerchantOutput

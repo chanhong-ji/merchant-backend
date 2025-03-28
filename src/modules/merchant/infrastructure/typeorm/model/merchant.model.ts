@@ -1,8 +1,9 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
-import { IMerchant } from '../../domain/merchant.interface';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
 import { UserModel } from 'src/modules/user/infrastructure/typeorm/model/user.model';
 import { User } from 'src/modules/user/domain/entity/user.entity';
+import { CategoryModel } from 'src/modules/merchant/infrastructure/typeorm/model/category.model';
+import { IMerchant } from 'src/modules/merchant/domain/interface/merchant.interface';
 
 @Entity({ name: 'merchant' })
 export class MerchantModel extends CoreModel implements IMerchant {
@@ -22,5 +23,8 @@ export class MerchantModel extends CoreModel implements IMerchant {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  user: User;
+  owner: User;
+
+  @ManyToOne((type) => CategoryModel, (category) => category.merchants)
+  category: CategoryModel;
 }

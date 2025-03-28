@@ -1,6 +1,6 @@
 import { UserRole } from '../user-role.enum';
 import { IUser } from '../interface/user.interface';
-import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { Verification } from './verification.entity';
 
 export class User implements IUser {

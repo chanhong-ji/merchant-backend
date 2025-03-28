@@ -1,4 +1,4 @@
-import { IMerchant } from '../../domain/merchant.interface';
+import { IMerchant } from '../../domain/interface/merchant.interface';
 
 export interface IUpdateMerchantInput
   extends Partial<

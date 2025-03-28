@@ -2,8 +2,8 @@ import { IUser } from '../../../domain/interface/user.interface';
 import { UserRole } from '../../../domain/user-role.enum';
 import { CoreModel } from 'src/modules/common/infrastructure/typeorm/core.model';
 import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
-import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/merchant.model';
-import { Merchant } from 'src/modules/merchant/domain/merchant.entity';
+import { MerchantModel } from 'src/modules/merchant/infrastructure/typeorm/model/merchant.model';
+import { Merchant } from 'src/modules/merchant/domain/entity/merchant.entity';
 import { Verification } from 'src/modules/user/domain/entity/verification.entity';
 import { VerificationModel } from './verification.model';
 
@@ -27,7 +27,7 @@ export class UserModel extends CoreModel implements IUser {
   @Column({ name: 'dong_code', nullable: true })
   dongCode?: string;
 
-  @OneToMany(() => MerchantModel, (merchant) => merchant.user, {
+  @OneToMany(() => MerchantModel, (merchant) => merchant.owner, {
     cascade: true,
   })
   merchants: Merchant[];
